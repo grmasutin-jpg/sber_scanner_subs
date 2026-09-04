@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark light" />
-  <title>Сбер Финансы — анализ операций и подписок</title>
+  <title>Сбер Сканер — анализ операций и подписок</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -359,45 +359,241 @@
     @media(max-width:760px){
       .nav-chapter{background:transparent!important;border:0!important;box-shadow:none!important}.nav-chapter.open{background:transparent!important;border:0!important;box-shadow:none!important}.menu .nav-subitem{min-height:0!important;height:100%!important;padding:5px 2px!important;border:0!important;background:transparent!important;display:none!important;flex-direction:column!important;gap:4px!important}.menu .nav-subitem.active{background:rgba(39,184,90,.13)!important;border:0!important}.menu .nav-subitem[data-target="overview"],.menu .nav-subitem[data-target="scanner"],.menu .nav-subitem[data-target="subscriptions"],.menu .nav-subitem[data-target="analytics"]{display:flex!important}.sub-icon{width:auto;height:auto;background:transparent!important}.sub-icon i{font-size:.92rem!important}.nav-subitem.active .sub-icon{background:transparent!important}.sub-copy{display:block!important;flex:0}.sub-copy strong{font-size:.58rem;max-width:64px}.sub-copy small,.nav-badge{display:none!important}
     }
+
+
+    /* v4.2 Sber Scanner brand + premium left catalog */
+    .sidebar{
+      display:flex;flex-direction:column;
+      background:
+        radial-gradient(320px 220px at 10% 0%,rgba(53,207,101,.10),transparent 68%),
+        #07130d!important;
+    }
+    body.light .sidebar{
+      background:radial-gradient(300px 200px at 8% 0%,rgba(39,184,90,.08),transparent 70%),#f7faf8!important;
+    }
+    .brand{
+      position:relative;display:flex;align-items:center;gap:12px;
+      padding:5px 7px 22px!important;margin-bottom:2px;
+      font-size:inherit;font-weight:inherit;letter-spacing:normal;
+    }
+    .brand::after{
+      content:"";position:absolute;left:8px;right:8px;bottom:7px;height:1px;
+      background:linear-gradient(90deg,rgba(97,223,135,.32),rgba(255,255,255,.06),transparent);
+    }
+    body.light .brand::after{background:linear-gradient(90deg,rgba(31,170,77,.24),rgba(25,76,43,.08),transparent)}
+    .brand-icon{
+      position:relative;width:48px;height:48px;border-radius:16px;flex:0 0 auto;
+      display:grid;place-items:center;overflow:hidden;
+      background:
+        radial-gradient(circle at 30% 22%,rgba(255,255,255,.40),transparent 26%),
+        linear-gradient(145deg,#6be895 0%,#2bc760 45%,#129541 100%);
+      border:1px solid rgba(160,255,188,.28);
+      box-shadow:0 14px 34px rgba(20,157,65,.30),inset 0 1px 0 rgba(255,255,255,.32),inset 0 -10px 20px rgba(0,80,35,.16);
+    }
+    .brand-icon::before{
+      content:"";position:absolute;inset:5px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.16);pointer-events:none;
+    }
+    .brand-icon::after{
+      content:"";position:absolute;width:52px;height:10px;left:-4px;top:7px;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+      transform:rotate(-28deg);filter:blur(1px);pointer-events:none;
+    }
+    .brand-icon svg{width:31px;height:31px;position:relative;z-index:2;overflow:visible}
+    .brand-icon path{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round}
+    .brand-icon .logo-corner{stroke-width:2.15;opacity:.72}
+    .brand-icon .logo-scan{stroke-width:1.8;opacity:.60;filter:drop-shadow(0 0 4px rgba(255,255,255,.55))}
+    .brand-icon .logo-check{stroke-width:3.4;filter:drop-shadow(0 2px 5px rgba(0,70,30,.28))}
+    .brand-copy{display:block!important;min-width:0;line-height:1.05}
+    .brand-copy strong{display:block;font-size:1.04rem;font-weight:900;letter-spacing:-.045em;color:var(--text)}
+    .brand-copy small{display:block;margin-top:6px;font-size:.59rem;font-weight:650;letter-spacing:.055em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+
+    .catalog-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:7px 10px 9px;color:var(--muted);text-transform:uppercase;
+      font-size:.61rem;font-weight:850;letter-spacing:.14em;
+    }
+    .catalog-head small{
+      padding:4px 7px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.025);
+      font-size:.54rem;font-weight:750;letter-spacing:.04em;text-transform:none;color:color-mix(in srgb,var(--muted) 88%,var(--green2) 12%);
+    }
+
+    .chapter-menu{
+      flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;
+      gap:10px!important;padding:1px 3px 8px;margin:0 -1px;
+      scrollbar-width:thin;scrollbar-color:rgba(97,223,135,.18) transparent;
+    }
+    .chapter-menu::-webkit-scrollbar{width:4px}.chapter-menu::-webkit-scrollbar-track{background:transparent}.chapter-menu::-webkit-scrollbar-thumb{background:rgba(97,223,135,.18);border-radius:99px}
+    .nav-chapter{
+      position:relative;border-radius:20px!important;
+      background:linear-gradient(145deg,rgba(255,255,255,.040),rgba(255,255,255,.018))!important;
+      border-color:rgba(255,255,255,.07)!important;
+      box-shadow:inset 0 1px rgba(255,255,255,.025),0 8px 22px rgba(0,0,0,.06)!important;
+    }
+    .nav-chapter::after{
+      content:"";position:absolute;left:0;top:17px;bottom:17px;width:2px;border-radius:0 8px 8px 0;
+      background:linear-gradient(180deg,transparent,rgba(97,223,135,.0),transparent);transition:.24s var(--ease);pointer-events:none;
+    }
+    .nav-chapter.open{
+      background:
+        radial-gradient(180px 100px at 8% 0%,rgba(39,184,90,.10),transparent 75%),
+        linear-gradient(145deg,rgba(255,255,255,.052),rgba(255,255,255,.021))!important;
+      border-color:rgba(97,223,135,.13)!important;
+      box-shadow:0 13px 34px rgba(0,0,0,.13),inset 0 1px rgba(255,255,255,.035)!important;
+    }
+    .nav-chapter.open::after{background:linear-gradient(180deg,transparent,var(--green2),transparent);box-shadow:0 0 15px rgba(97,223,135,.28)}
+    body.light .nav-chapter{background:linear-gradient(145deg,#fff,#f7faf8)!important;border-color:rgba(25,76,43,.075)!important;box-shadow:0 7px 20px rgba(30,77,46,.035)!important}
+    body.light .nav-chapter.open{background:linear-gradient(145deg,#fff,#f3faf5)!important;border-color:rgba(31,170,77,.14)!important;box-shadow:0 12px 28px rgba(30,77,46,.07)!important}
+
+    .chapter-toggle{
+      min-height:66px!important;padding:10px 11px!important;border-radius:19px!important;
+      transition:background .22s var(--ease),transform .22s var(--ease)!important;
+    }
+    .chapter-toggle:hover{background:rgba(255,255,255,.028)!important;transform:translateY(-1px)!important}
+    body.light .chapter-toggle:hover{background:rgba(31,170,77,.035)!important}
+    .chapter-icon{
+      width:39px;height:39px;border-radius:13px;
+      background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
+      box-shadow:inset 0 1px rgba(255,255,255,.035);
+    }
+    .nav-chapter.open .chapter-icon{background:linear-gradient(145deg,rgba(97,223,135,.16),rgba(39,184,90,.07));border-color:rgba(97,223,135,.15);box-shadow:0 8px 20px rgba(24,142,59,.08),inset 0 1px rgba(255,255,255,.05)}
+    .chapter-copy strong{font-size:.80rem;letter-spacing:-.012em}.chapter-copy small{margin-top:4px;font-size:.60rem;line-height:1.3}
+    .chapter-number{padding:4px 5px;border-radius:7px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.04)}
+    .chapter-chevron{width:23px;height:23px;border-radius:8px;background:rgba(255,255,255,.035);transition:transform .22s var(--ease),background .22s var(--ease)}
+    .nav-chapter.open .chapter-chevron{background:rgba(39,184,90,.08)}
+
+    .nav-submenu{padding-left:11px!important;padding-right:9px!important}
+    .nav-submenu::before{
+      content:"";position:absolute;left:29px;top:1px;bottom:13px;width:1px;
+      background:linear-gradient(180deg,rgba(97,223,135,.20),rgba(255,255,255,.045),transparent);pointer-events:none;
+    }
+    .nav-chapter.open .nav-submenu{padding-bottom:11px!important}
+    .menu .nav-subitem{
+      min-height:53px!important;padding:7px 9px!important;border-radius:14px!important;
+      isolation:isolate;transition:background .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease)!important;
+    }
+    .menu .nav-subitem:hover{transform:translateX(2px)!important;background:rgba(255,255,255,.042)!important;border-color:rgba(255,255,255,.055)!important}
+    .menu .nav-subitem.active{
+      transform:none!important;
+      background:linear-gradient(90deg,rgba(39,184,90,.14),rgba(255,255,255,.045))!important;
+      border-color:rgba(97,223,135,.13)!important;
+      box-shadow:inset 0 1px rgba(255,255,255,.035),0 8px 20px rgba(0,0,0,.07)!important;
+    }
+    body.light .menu .nav-subitem.active{background:linear-gradient(90deg,rgba(39,184,90,.10),#f8fbf9)!important;border-color:rgba(31,170,77,.12)!important}
+    .sub-icon{position:relative;width:32px;height:32px;border-radius:11px;background:rgba(255,255,255,.035);z-index:1}
+    .nav-subitem.active .sub-icon{background:linear-gradient(145deg,rgba(97,223,135,.19),rgba(39,184,90,.08));box-shadow:inset 0 1px rgba(255,255,255,.04)}
+    .nav-subitem.active .sub-icon::after{content:"";position:absolute;right:-2px;top:-2px;width:7px;height:7px;border-radius:50%;background:var(--green2);border:2px solid #0d1d14;box-shadow:0 0 9px rgba(97,223,135,.55)}
+    body.light .nav-subitem.active .sub-icon::after{border-color:#f3faf5}
+    .sub-copy strong{font-size:.75rem;letter-spacing:-.008em}.sub-copy small{font-size:.585rem;margin-top:4px}
+    .nav-badge{border-radius:9px!important;background:rgba(255,255,255,.035)!important}
+    .nav-subitem.active .nav-badge{background:rgba(39,184,90,.11)!important;box-shadow:inset 0 1px rgba(255,255,255,.025)}
+
+    .sidebar-tools{flex:0 0 auto;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+    .sidebar-tool{min-height:42px;border:1px solid transparent;background:rgba(255,255,255,.018);border-radius:13px;font-weight:650}
+    .sidebar-tool:hover{border-color:rgba(255,255,255,.055);background:rgba(255,255,255,.04)}
+    .sidebar-bottom{position:static!important;left:auto!important;right:auto!important;bottom:auto!important;flex:0 0 auto;margin-top:10px}
+    .ai-status{border-radius:15px;background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.02));box-shadow:inset 0 1px rgba(255,255,255,.025)}
+
+    @media(max-width:1220px) and (min-width:761px){
+      .catalog-head{display:none}.brand{justify-content:center;padding-left:0!important;padding-right:0!important}.brand::after{left:4px;right:4px}
+      .brand-icon{width:44px;height:44px;border-radius:15px}.brand-copy{display:none!important}
+      .chapter-menu{padding-left:1px;padding-right:1px}.nav-submenu::before{display:none}
+      .nav-subitem.active .sub-icon::after{right:-1px;top:-1px}
+      .sidebar-tools{display:none}.sidebar-bottom{display:none}
+    }
+    @media(max-width:760px){
+      .sidebar{display:block!important}.catalog-head{display:none!important}.chapter-menu{overflow:visible!important;padding:0!important;margin:0!important}.nav-submenu::before,.nav-chapter::after{display:none!important}
+      .menu .nav-subitem:hover{transform:none!important}.nav-subitem.active .sub-icon::after{display:none!important}
+      .sidebar-tools,.sidebar-bottom{display:none!important}
+    }
+
+
+    /* v4.3 — flat Sber-style navigation */
+    .brand{padding-bottom:19px!important}
+    .brand-copy{display:flex!important;align-items:center!important;min-height:48px!important}
+    .brand-copy strong{font-size:1.08rem!important;letter-spacing:-.04em!important}
+    .brand-copy small,.catalog-head{display:none!important}
+    .sber-menu{
+      display:flex!important;flex-direction:column!important;gap:4px!important;
+      flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:6px 2px 8px!important;margin:0!important;
+    }
+    .sber-menu .nav-subitem{
+      width:100%;min-height:50px!important;padding:7px 10px!important;border:0!important;border-radius:14px!important;
+      display:flex!important;align-items:center!important;gap:11px!important;text-align:left;cursor:pointer;
+      background:transparent!important;color:var(--text)!important;box-shadow:none!important;transform:none!important;
+      transition:background .18s var(--ease),color .18s var(--ease)!important;
+    }
+    .sber-menu .nav-subitem::before,.sber-menu .nav-subitem::after{display:none!important;content:none!important}
+    .sber-menu .nav-subitem:hover{background:rgba(255,255,255,.045)!important;transform:none!important;border:0!important}
+    .sber-menu .nav-subitem.active{
+      background:rgba(39,184,90,.14)!important;border:0!important;box-shadow:none!important;color:var(--text)!important;
+    }
+    body.light .sber-menu .nav-subitem:hover{background:#eef4f0!important}
+    body.light .sber-menu .nav-subitem.active{background:#e7f5eb!important}
+    .sber-menu .sub-icon{
+      width:34px;height:34px;flex:0 0 34px;border-radius:11px;display:grid!important;place-items:center!important;
+      background:transparent!important;border:0!important;box-shadow:none!important;
+    }
+    .sber-menu .sub-icon i{font-size:.92rem!important;color:var(--muted)!important;width:auto!important}
+    .sber-menu .nav-subitem.active .sub-icon{background:rgba(39,184,90,.11)!important}
+    .sber-menu .nav-subitem.active .sub-icon i{color:var(--green2)!important}
+    body.light .sber-menu .nav-subitem.active .sub-icon{background:rgba(39,184,90,.10)!important}
+    .sber-menu .sub-copy{display:block!important;flex:1!important;min-width:0!important}
+    .sber-menu .sub-copy strong{font-size:.83rem!important;font-weight:700!important;line-height:1.2!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+    .sber-menu .sub-copy small{display:none!important}
+    .sber-menu .nav-badge{
+      margin-left:auto!important;min-width:24px;height:22px;padding:0 6px!important;border-radius:999px!important;
+      display:grid!important;place-items:center!important;background:rgba(255,255,255,.05)!important;border:0!important;color:var(--muted)!important;font-size:.61rem!important;
+    }
+    .sber-menu .nav-subitem.active .nav-badge{background:rgba(39,184,90,.16)!important;color:var(--green2)!important}
+    .sber-menu-divider{height:1px;flex:0 0 1px;margin:8px 10px;background:var(--line)}
+    .sber-menu .sber-secondary{color:var(--muted)!important}
+    .sber-menu .sber-secondary:hover,.sber-menu .sber-secondary.active{color:var(--text)!important}
+
+    @media(max-width:1220px) and (min-width:761px){
+      .sber-menu{align-items:stretch!important;padding-left:0!important;padding-right:0!important}
+      .sber-menu .nav-subitem{justify-content:center!important;padding:7px!important}
+      .sber-menu .sub-copy,.sber-menu .nav-badge{display:none!important}
+      .sber-menu-divider{margin:7px 6px}
+    }
+    @media(max-width:760px){
+      .sber-menu{height:100%!important;display:grid!important;grid-template-columns:repeat(5,1fr)!important;gap:3px!important;padding:0!important;overflow:visible!important}
+      .sber-menu-divider{display:none!important}
+      .sber-menu .nav-subitem{display:none!important;min-height:0!important;height:100%!important;padding:5px 2px!important;flex-direction:column!important;justify-content:center!important;gap:4px!important;border-radius:14px!important}
+      .sber-menu .nav-subitem[data-target="overview"],.sber-menu .nav-subitem[data-target="scanner"],.sber-menu .nav-subitem[data-target="subscriptions"],.sber-menu .nav-subitem[data-target="analytics"]{display:flex!important}
+      .sber-menu .sub-icon{width:auto!important;height:auto!important;flex:0 0 auto!important;background:transparent!important}
+      .sber-menu .nav-subitem.active .sub-icon{background:transparent!important}
+      .sber-menu .sub-copy{display:block!important;flex:0!important}
+      .sber-menu .sub-copy strong{font-size:.58rem!important;font-weight:650!important;max-width:64px!important}
+      .sber-menu .nav-badge{display:none!important}
+      .sber-menu .mobile-more-toggle{display:flex!important}
+    }
+
   </style>
 
 </head>
 <body>
 <div class="app-shell">
   <aside class="sidebar" aria-label="Основная навигация">
-    <div class="brand"><div class="brand-icon"><i class="fa-solid fa-radar"></i></div><span>Сбер Финансы</span></div>
-    <nav class="menu chapter-menu" aria-label="Разделы сайта">
-      <div class="nav-chapter open" data-chapter="statement">
-        <button class="chapter-toggle" type="button" data-chapter-toggle="statement" aria-expanded="true">
-          <span class="chapter-main"><span class="chapter-icon"><i class="fa-solid fa-file-invoice-dollar"></i></span><span class="chapter-copy"><strong>Анализ выписки</strong><small>Загрузка и найденные платежи</small></span></span>
-          <span class="chapter-side"><span class="chapter-number">01</span><i class="fa-solid fa-chevron-down chapter-chevron"></i></span>
-        </button>
-        <div class="nav-submenu">
-          <button class="nav-subitem active" data-target="overview" title="Обзор"><span class="sub-icon"><i class="fa-solid fa-house"></i></span><span class="sub-copy"><strong>Обзор</strong><small>Главные показатели</small></span></button>
-          <button class="nav-subitem" data-target="scanner" title="Новый анализ"><span class="sub-icon"><i class="fa-solid fa-file-shield"></i></span><span class="sub-copy"><strong>Новый анализ</strong><small>Загрузить выписку</small></span></button>
-          <button class="nav-subitem" data-target="subscriptions" title="Подписки"><span class="sub-icon"><i class="fa-solid fa-repeat"></i></span><span class="sub-copy"><strong>Подписки</strong><small>Подтверждённые списания</small></span><span class="nav-badge" id="navSubsCount">0</span></button>
-        </div>
+    <div class="brand" aria-label="Сбер Сканер">
+      <div class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" role="img" focusable="false">
+          <path class="logo-corner" d="M14 8H9a3 3 0 0 0-3 3v5M34 8h5a3 3 0 0 1 3 3v5M14 40H9a3 3 0 0 1-3-3v-5M34 40h5a3 3 0 0 0 3-3v-5"/>
+          <path class="logo-scan" d="M10 25h28"/>
+          <path class="logo-check" d="m15 24 6 6 13-14"/>
+        </svg>
       </div>
-      <div class="nav-chapter" data-chapter="intelligence">
-        <button class="chapter-toggle" type="button" data-chapter-toggle="intelligence" aria-expanded="false">
-          <span class="chapter-main"><span class="chapter-icon"><i class="fa-solid fa-chart-column"></i></span><span class="chapter-copy"><strong>Аналитика и AI</strong><small>Графики и выводы модели</small></span></span>
-          <span class="chapter-side"><span class="chapter-number">02</span><i class="fa-solid fa-chevron-down chapter-chevron"></i></span>
-        </button>
-        <div class="nav-submenu">
-          <button class="nav-subitem" data-target="analytics" title="Аналитика"><span class="sub-icon"><i class="fa-solid fa-chart-line"></i></span><span class="sub-copy"><strong>Аналитика</strong><small>Категории и динамика</small></span></button>
-          <button class="nav-subitem" data-target="insights" title="AI-инсайты"><span class="sub-icon"><i class="fa-solid fa-brain"></i></span><span class="sub-copy"><strong>AI-инсайты</strong><small>Объяснения подписок</small></span></button>
-        </div>
-      </div>
-      <div class="nav-chapter" data-chapter="guide">
-        <button class="chapter-toggle" type="button" data-chapter-toggle="guide" aria-expanded="false">
-          <span class="chapter-main"><span class="chapter-icon"><i class="fa-solid fa-book-open"></i></span><span class="chapter-copy"><strong>Справка</strong><small>Логика и помощь</small></span></span>
-          <span class="chapter-side"><span class="chapter-number">03</span><i class="fa-solid fa-chevron-down chapter-chevron"></i></span>
-        </button>
-        <div class="nav-submenu">
-          <button class="nav-subitem" data-target="how" title="Как это работает"><span class="sub-icon"><i class="fa-solid fa-route"></i></span><span class="sub-copy"><strong>Как это работает</strong><small>Этапы анализа</small></span></button>
-          <button class="nav-subitem" data-target="help" title="Помощь"><span class="sub-icon"><i class="fa-solid fa-circle-question"></i></span><span class="sub-copy"><strong>Помощь</strong><small>Форматы и ответы</small></span></button>
-        </div>
-      </div>
+      <span class="brand-copy"><strong>Сбер Сканер</strong></span>
+    </div>
+    <nav class="menu chapter-menu sber-menu" aria-label="Разделы сайта">
+      <button class="nav-subitem active" data-target="overview" title="Обзор"><span class="sub-icon"><i class="fa-solid fa-house"></i></span><span class="sub-copy"><strong>Обзор</strong></span></button>
+      <button class="nav-subitem" data-target="scanner" title="Новый анализ"><span class="sub-icon"><i class="fa-solid fa-file-arrow-up"></i></span><span class="sub-copy"><strong>Новый анализ</strong></span></button>
+      <button class="nav-subitem" data-target="subscriptions" title="Подписки"><span class="sub-icon"><i class="fa-solid fa-repeat"></i></span><span class="sub-copy"><strong>Подписки</strong></span><span class="nav-badge" id="navSubsCount">0</span></button>
+      <button class="nav-subitem" data-target="analytics" title="Аналитика"><span class="sub-icon"><i class="fa-solid fa-chart-line"></i></span><span class="sub-copy"><strong>Аналитика</strong></span></button>
+      <button class="nav-subitem" data-target="insights" title="AI-инсайты"><span class="sub-icon"><i class="fa-solid fa-sparkles"></i></span><span class="sub-copy"><strong>AI-инсайты</strong></span></button>
+      <div class="sber-menu-divider" aria-hidden="true"></div>
+      <button class="nav-subitem sber-secondary" data-target="how" title="Как это работает"><span class="sub-icon"><i class="fa-solid fa-circle-info"></i></span><span class="sub-copy"><strong>Как это работает</strong></span></button>
+      <button class="nav-subitem sber-secondary" data-target="help" title="Помощь"><span class="sub-icon"><i class="fa-solid fa-circle-question"></i></span><span class="sub-copy"><strong>Помощь</strong></span></button>
       <button class="mobile-more-toggle" id="mobileMoreBtn" type="button" title="Ещё"><i class="fa-solid fa-ellipsis"></i><span>Ещё</span></button>
     </nav>
     <div class="sidebar-tools">
@@ -951,6 +1147,8 @@
   init();
 </script>
 
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"850354c52aa4489fbe2aab7efa2c1124","spa":2}' crossorigin="anonymous"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"850354c52aa4489fbe2aab7efa2c1124","spa":2}' crossorigin="anonymous"></script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"850354c52aa4489fbe2aab7efa2c1124","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
