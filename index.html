@@ -64,8 +64,6 @@
 
     /* Navigation & usability upgrade */
     :focus-visible{outline:2px solid var(--green2);outline-offset:3px}
-    .scroll-progress{position:fixed;left:250px;right:0;top:73px;height:2px;z-index:80;pointer-events:none;background:transparent}
-    .scroll-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--green),var(--green2));box-shadow:0 0 16px rgba(68,195,92,.55);transition:width .08s linear}
     .menu-label{padding:15px 13px 7px;color:var(--muted);font-size:.61rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
     .menu-spacer{height:7px}
     .menu button i{width:19px;text-align:center}
@@ -76,8 +74,6 @@
     .sidebar-tool{width:100%;border:0;background:transparent;color:var(--muted);display:flex;align-items:center;gap:10px;padding:10px 13px;border-radius:12px;cursor:pointer;font:inherit;font-size:.75rem;text-align:left;transition:.2s var(--ease)}
     .sidebar-tool:hover{background:rgba(255,255,255,.04);color:var(--text)}.sidebar-tool i{width:18px;text-align:center;color:var(--green2)}
     .page-context{display:flex;align-items:center;gap:12px;min-width:0}.page-label{min-width:0}.page-label strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .chapter-switcher{display:flex;align-items:center;gap:4px;padding:3px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025)}
-    .chapter-switcher button{width:32px;height:32px;border:0;background:transparent;color:var(--muted);border-radius:9px;cursor:pointer;transition:.2s}.chapter-switcher button:hover{background:var(--greenSoft);color:var(--text)}
     .command-trigger{min-width:142px;height:40px;padding:0 10px 0 12px;border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--muted);border-radius:12px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:.2s}
     .command-trigger:hover{color:var(--text);border-color:rgba(68,195,92,.28);background:rgba(255,255,255,.045)}.command-trigger kbd{margin-left:auto;padding:3px 6px;border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.04);font:600 .62rem Inter,sans-serif;color:var(--muted)}
     .section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:0 0 15px;padding:0 3px}.section-heading h2{font-size:clamp(1.35rem,2.3vw,2rem);letter-spacing:-.045em;line-height:1.05}.section-heading p{margin-top:7px;color:var(--muted);font-size:.82rem;line-height:1.55;max-width:650px}.section-index{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.7rem;font-weight:700}.section-index b{color:var(--green2);font-size:.78rem}
@@ -97,10 +93,10 @@
     .command-list{padding:9px;max-height:min(58vh,460px);overflow:auto}.command-group-label{padding:9px 10px 6px;color:var(--muted);font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em}.command-item{width:100%;border:0;background:transparent;color:var(--text);padding:11px 12px;border-radius:12px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer}.command-item:hover,.command-item:focus{background:var(--greenSoft);outline:0}.command-item i{width:24px;color:var(--green2);text-align:center}.command-item strong{font-size:.78rem}.command-item span{display:block;color:var(--muted);font-size:.66rem;margin-top:2px}.command-item .command-key{margin-left:auto;color:var(--muted);font-size:.62rem}.command-empty{padding:26px;text-align:center;color:var(--muted);font-size:.78rem}
     body.lock-scroll{overflow:hidden}
 
-    @media(max-width:1220px){.scroll-progress{left:86px}.menu-label,.sidebar-tools{display:none}.command-trigger{min-width:42px;width:42px;padding:0;justify-content:center}.command-trigger span,.command-trigger kbd{display:none}}
+    @media(max-width:1220px){.menu-label,.sidebar-tools{display:none}.command-trigger{min-width:42px;width:42px;padding:0;justify-content:center}.command-trigger span,.command-trigger kbd{display:none}}
     @media(max-width:900px){.quick-actions{grid-template-columns:repeat(2,1fr)}.process-grid,.trust-strip{grid-template-columns:1fr}.help-grid{grid-template-columns:1fr}.support-card{position:static}}
     @media(max-width:760px){
-      .scroll-progress{left:0;top:65px}.chapter-switcher{display:none}.command-trigger{display:none}.page-context{gap:8px}.page-label strong{font-size:.84rem}
+      .command-trigger{display:none}.page-context{gap:8px}.page-label strong{font-size:.84rem}
       .menu{grid-template-columns:repeat(5,1fr)!important}.menu-label,.menu-spacer,.menu button.nav-secondary{display:none!important}.menu .mobile-more-toggle{display:flex!important}
       .quick-actions{grid-template-columns:1fr 1fr;gap:8px}.quick-action{padding:11px}.quick-action-icon{width:34px;height:34px}.quick-action span{display:none}
       .section-heading{align-items:flex-start}.section-index{display:none}.section-heading h2{font-size:1.5rem}.section-heading p{font-size:.76rem}
@@ -294,13 +290,75 @@
     body.light .global-search input{background:rgba(255,255,255,.88)}
     .global-search input::placeholder{color:var(--muted)}
     .global-search input:focus{border-color:rgba(97,223,135,.5);background:rgba(255,255,255,.065);box-shadow:0 0 0 4px rgba(39,184,90,.08)}
-    .global-search .search-key{position:absolute;right:10px;padding:3px 6px;border:1px solid var(--line);border-radius:7px;color:var(--muted);font-size:.58rem;background:rgba(255,255,255,.035);pointer-events:none}
     .audit-panel{margin:0 0 16px;padding:16px;border:1px solid rgba(97,223,135,.16);border-radius:17px;background:linear-gradient(135deg,rgba(39,184,90,.085),rgba(255,255,255,.018))}
     .audit-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.audit-head strong{font-size:.86rem}.audit-head span{font-size:.68rem;color:var(--muted)}
     .audit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.audit-item{padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025)}.audit-item span{display:block;color:var(--muted);font-size:.64rem;margin-bottom:4px}.audit-item b{font-size:.82rem}.audit-note{margin-top:10px;color:var(--muted);font-size:.7rem;line-height:1.5}.audit-note i{color:var(--green2);margin-right:5px}
     .search-result .command-key{font-size:.58rem}
     @media(max-width:900px){.global-search{width:min(300px,38vw)}.audit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:760px){.global-search{width:44px}.global-search input{padding:0;cursor:pointer;color:transparent}.global-search input::placeholder{color:transparent}.global-search>i{left:15px}.global-search .search-key{display:none}.topbar-actions{flex:1;justify-content:flex-end}}
+    @media(max-width:760px){.global-search{width:44px}.global-search input{padding:0;cursor:pointer;color:transparent}.global-search input::placeholder{color:transparent}.global-search>i{left:15px}.topbar-actions{flex:1;justify-content:flex-end}}
+
+    /* v4 navigation + solid header */
+    .topbar{background:#0a1710!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:0 8px 28px rgba(0,0,0,.18)}
+    body.light .topbar{background:#f4f8f5!important;box-shadow:0 8px 28px rgba(31,75,47,.07)}
+    .global-search input{padding-right:16px;background:#12241a!important}
+    body.light .global-search input{background:#fff!important}
+    .chapter-menu{display:flex!important;flex-direction:column;gap:9px}
+    .nav-chapter{display:block;border:1px solid transparent;border-radius:16px;overflow:hidden;transition:.2s var(--ease)}
+    .nav-chapter.open{border-color:var(--line);background:rgba(255,255,255,.018)}
+    .chapter-toggle{width:100%;min-height:44px!important;padding:10px 12px!important;border:0!important;background:transparent!important;color:var(--muted)!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;border-radius:14px!important;cursor:pointer;text-align:left;font-size:.74rem!important;font-weight:800!important;letter-spacing:.015em}
+    .chapter-toggle>span{display:flex;align-items:center;gap:9px}.chapter-toggle>span>i{color:var(--green2);width:18px;text-align:center}
+    .chapter-toggle:hover{color:var(--text)!important;background:rgba(255,255,255,.035)!important;transform:none!important}
+    .chapter-chevron{font-size:.68rem;transition:transform .22s var(--ease);color:var(--muted)!important}.nav-chapter.open .chapter-chevron{transform:rotate(180deg)}
+    .nav-submenu{display:grid;grid-template-columns:1fr;gap:4px;max-height:0;opacity:0;overflow:hidden;padding:0 6px;transition:max-height .28s var(--ease),opacity .2s var(--ease),padding .2s var(--ease)}
+    .nav-chapter.open .nav-submenu{max-height:240px;opacity:1;padding:0 6px 7px}
+    .menu .nav-subitem{min-height:42px;padding:10px 11px 10px 13px;border-radius:12px;font-size:.82rem;font-weight:650}
+    .menu .nav-subitem i{font-size:.86rem}.menu .nav-subitem.active::before{left:1px;top:10px;bottom:10px}
+    @media(max-width:1220px) and (min-width:761px){.chapter-toggle{justify-content:center!important}.chapter-toggle>span>span{display:none}.chapter-toggle>span{display:flex!important;font-size:0}.chapter-toggle>span>i{font-size:.95rem}.chapter-chevron{display:none}.nav-chapter.open .nav-submenu{padding-left:4px;padding-right:4px}.menu .nav-subitem{justify-content:center;padding:8px}.menu .nav-subitem span{display:none!important}}
+    @media(max-width:760px){
+      .topbar{background:#0a1710!important}.chapter-menu{height:100%;display:grid!important;grid-template-columns:repeat(5,1fr)!important;gap:3px!important}
+      body.light .topbar{background:#f4f8f5!important}
+      .nav-chapter{display:contents!important}.chapter-toggle{display:none!important}.nav-submenu{display:contents!important;max-height:none!important;opacity:1!important;padding:0!important;overflow:visible!important}
+      .menu .nav-subitem{display:none!important}.menu .nav-subitem[data-target="overview"],.menu .nav-subitem[data-target="scanner"],.menu .nav-subitem[data-target="subscriptions"],.menu .nav-subitem[data-target="analytics"]{display:flex!important}
+      .menu .nav-subitem span{display:block!important}.menu .nav-subitem.active::before{display:none!important}
+      .mobile-more-toggle{display:flex!important}
+    }
+    /* v4.1 cleaner hierarchical navigation */
+    .app-shell{grid-template-columns:286px 1fr}
+    .sidebar{background:#07130d!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:20px 14px!important}
+    body.light .sidebar{background:#f7faf8!important}
+    .brand{padding-left:8px!important;padding-right:8px!important}
+    .chapter-menu{gap:12px!important}
+    .nav-chapter{border:1px solid var(--line)!important;background:#0c1a12;border-radius:18px!important;overflow:hidden;box-shadow:inset 0 1px rgba(255,255,255,.025)}
+    body.light .nav-chapter{background:#f8fbf9}
+    .nav-chapter.open{background:#0e1e15!important;border-color:rgba(255,255,255,.105)!important;box-shadow:0 10px 28px rgba(0,0,0,.10),inset 0 1px rgba(255,255,255,.035)}
+    body.light .nav-chapter.open{background:#fff!important;border-color:rgba(25,76,43,.11)!important;box-shadow:0 10px 28px rgba(30,77,46,.055)}
+    .chapter-toggle{min-height:62px!important;padding:9px 10px!important;color:var(--text)!important;border-radius:17px!important}
+    .chapter-main{display:flex!important;align-items:center!important;gap:10px!important;min-width:0}
+    .chapter-icon{width:36px;height:36px;border-radius:11px;display:grid!important;place-items:center;flex:0 0 auto;background:rgba(255,255,255,.045);border:1px solid var(--line)}
+    .chapter-icon i{color:var(--muted)!important;width:auto!important}
+    .nav-chapter.open .chapter-icon{background:rgba(39,184,90,.10);border-color:rgba(97,223,135,.12)}
+    .nav-chapter.open .chapter-icon i{color:var(--green2)!important}
+    .chapter-copy{display:block!important;min-width:0}.chapter-copy strong{display:block;font-size:.78rem;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chapter-copy small{display:block;margin-top:4px;color:var(--muted);font-size:.61rem;font-weight:550;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .chapter-side{display:flex!important;align-items:center!important;gap:8px!important;flex:0 0 auto}.chapter-number{font-size:.57rem;font-weight:850;color:var(--muted);letter-spacing:.08em}.chapter-chevron{width:20px;height:20px;display:grid;place-items:center;border-radius:7px;background:rgba(255,255,255,.035)}
+    .nav-submenu{position:relative;padding-left:10px!important;padding-right:10px!important;gap:5px!important}.nav-chapter.open .nav-submenu{padding-bottom:10px!important}
+    .menu .nav-subitem{position:relative;min-height:51px!important;padding:7px 9px!important;border:1px solid transparent!important;border-radius:13px!important;gap:9px!important;background:transparent!important;color:var(--muted)!important;transform:none!important}
+    .menu .nav-subitem::before{content:none!important;display:none!important}
+    .menu .nav-subitem:hover{background:rgba(255,255,255,.035)!important;color:var(--text)!important;border-color:rgba(255,255,255,.035)!important}
+    .menu .nav-subitem.active{background:rgba(255,255,255,.07)!important;color:var(--text)!important;border-color:rgba(255,255,255,.07)!important;box-shadow:inset 0 1px rgba(255,255,255,.025)}
+    body.light .menu .nav-subitem:hover{background:#f4f8f5!important;border-color:rgba(25,76,43,.06)!important}
+    body.light .menu .nav-subitem.active{background:#eef6f0!important;border-color:rgba(25,76,43,.08)!important}
+    .sub-icon{width:31px;height:31px;border-radius:10px;display:grid!important;place-items:center!important;flex:0 0 auto;background:rgba(255,255,255,.035)}
+    .sub-icon i{width:auto!important;color:var(--muted)!important;font-size:.78rem!important}.nav-subitem.active .sub-icon{background:rgba(39,184,90,.11)}.nav-subitem.active .sub-icon i{color:var(--green2)!important}
+    .sub-copy{display:block!important;min-width:0;flex:1}.sub-copy strong{display:block;font-size:.74rem;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sub-copy small{display:block;margin-top:3px;font-size:.59rem;line-height:1.15;color:var(--muted);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .nav-badge{margin-left:auto!important;min-width:24px;height:22px;display:grid!important;place-items:center;padding:0 6px!important;border-radius:8px!important;background:rgba(255,255,255,.045)!important;color:var(--muted)!important;border:1px solid var(--line)!important;font-size:.59rem!important}
+    .nav-subitem.active .nav-badge{background:rgba(39,184,90,.10)!important;color:var(--green2)!important;border-color:rgba(97,223,135,.10)!important}
+    @media(max-width:1220px) and (min-width:761px){
+      .app-shell{grid-template-columns:86px 1fr}.sidebar{padding:20px 11px!important}
+      .chapter-copy,.chapter-number,.sub-copy,.nav-badge{display:none!important}.chapter-toggle{min-height:50px!important;justify-content:center!important;padding:7px!important}.chapter-main{gap:0!important}.chapter-icon{width:36px;height:36px}.chapter-side{display:none!important}.nav-chapter.open .nav-submenu{padding:4px 4px 8px!important}.menu .nav-subitem{min-height:42px!important;justify-content:center!important;padding:5px!important}.sub-icon{width:32px;height:32px}.menu .nav-subitem span.sub-icon{display:grid!important}
+    }
+    @media(max-width:760px){
+      .nav-chapter{background:transparent!important;border:0!important;box-shadow:none!important}.nav-chapter.open{background:transparent!important;border:0!important;box-shadow:none!important}.menu .nav-subitem{min-height:0!important;height:100%!important;padding:5px 2px!important;border:0!important;background:transparent!important;display:none!important;flex-direction:column!important;gap:4px!important}.menu .nav-subitem.active{background:rgba(39,184,90,.13)!important;border:0!important}.menu .nav-subitem[data-target="overview"],.menu .nav-subitem[data-target="scanner"],.menu .nav-subitem[data-target="subscriptions"],.menu .nav-subitem[data-target="analytics"]{display:flex!important}.sub-icon{width:auto;height:auto;background:transparent!important}.sub-icon i{font-size:.92rem!important}.nav-subitem.active .sub-icon{background:transparent!important}.sub-copy{display:block!important;flex:0}.sub-copy strong{font-size:.58rem;max-width:64px}.sub-copy small,.nav-badge{display:none!important}
+    }
   </style>
 
 </head>
@@ -308,16 +366,38 @@
 <div class="app-shell">
   <aside class="sidebar" aria-label="Основная навигация">
     <div class="brand"><div class="brand-icon"><i class="fa-solid fa-radar"></i></div><span>Сбер Финансы</span></div>
-    <nav class="menu" aria-label="Разделы сайта">
-      <div class="menu-label">Анализ</div>
-      <button class="active" data-target="overview" title="Обзор"><i class="fa-solid fa-house"></i><span>Обзор</span></button>
-      <button data-target="scanner" title="Новый анализ"><i class="fa-solid fa-file-shield"></i><span>Новый анализ</span></button>
-      <button class="nav-secondary" data-target="subscriptions" title="Подписки"><i class="fa-solid fa-repeat"></i><span>Подписки</span><span class="nav-badge" id="navSubsCount">0</span></button>
-      <button data-target="analytics" title="Аналитика"><i class="fa-solid fa-chart-line"></i><span>Аналитика</span></button>
-      <div class="menu-label">Помощник</div>
-      <button class="nav-secondary" data-target="insights" title="AI-инсайты"><i class="fa-solid fa-brain"></i><span>AI-инсайты</span></button>
-      <button class="nav-secondary" data-target="how" title="Как это работает"><i class="fa-solid fa-route"></i><span>Как это работает</span></button>
-      <button class="nav-secondary" data-target="help" title="Помощь"><i class="fa-solid fa-circle-question"></i><span>Помощь</span></button>
+    <nav class="menu chapter-menu" aria-label="Разделы сайта">
+      <div class="nav-chapter open" data-chapter="statement">
+        <button class="chapter-toggle" type="button" data-chapter-toggle="statement" aria-expanded="true">
+          <span class="chapter-main"><span class="chapter-icon"><i class="fa-solid fa-file-invoice-dollar"></i></span><span class="chapter-copy"><strong>Анализ выписки</strong><small>Загрузка и найденные платежи</small></span></span>
+          <span class="chapter-side"><span class="chapter-number">01</span><i class="fa-solid fa-chevron-down chapter-chevron"></i></span>
+        </button>
+        <div class="nav-submenu">
+          <button class="nav-subitem active" data-target="overview" title="Обзор"><span class="sub-icon"><i class="fa-solid fa-house"></i></span><span class="sub-copy"><strong>Обзор</strong><small>Главные показатели</small></span></button>
+          <button class="nav-subitem" data-target="scanner" title="Новый анализ"><span class="sub-icon"><i class="fa-solid fa-file-shield"></i></span><span class="sub-copy"><strong>Новый анализ</strong><small>Загрузить выписку</small></span></button>
+          <button class="nav-subitem" data-target="subscriptions" title="Подписки"><span class="sub-icon"><i class="fa-solid fa-repeat"></i></span><span class="sub-copy"><strong>Подписки</strong><small>Подтверждённые списания</small></span><span class="nav-badge" id="navSubsCount">0</span></button>
+        </div>
+      </div>
+      <div class="nav-chapter" data-chapter="intelligence">
+        <button class="chapter-toggle" type="button" data-chapter-toggle="intelligence" aria-expanded="false">
+          <span class="chapter-main"><span class="chapter-icon"><i class="fa-solid fa-chart-column"></i></span><span class="chapter-copy"><strong>Аналитика и AI</strong><small>Графики и выводы модели</small></span></span>
+          <span class="chapter-side"><span class="chapter-number">02</span><i class="fa-solid fa-chevron-down chapter-chevron"></i></span>
+        </button>
+        <div class="nav-submenu">
+          <button class="nav-subitem" data-target="analytics" title="Аналитика"><span class="sub-icon"><i class="fa-solid fa-chart-line"></i></span><span class="sub-copy"><strong>Аналитика</strong><small>Категории и динамика</small></span></button>
+          <button class="nav-subitem" data-target="insights" title="AI-инсайты"><span class="sub-icon"><i class="fa-solid fa-brain"></i></span><span class="sub-copy"><strong>AI-инсайты</strong><small>Объяснения подписок</small></span></button>
+        </div>
+      </div>
+      <div class="nav-chapter" data-chapter="guide">
+        <button class="chapter-toggle" type="button" data-chapter-toggle="guide" aria-expanded="false">
+          <span class="chapter-main"><span class="chapter-icon"><i class="fa-solid fa-book-open"></i></span><span class="chapter-copy"><strong>Справка</strong><small>Логика и помощь</small></span></span>
+          <span class="chapter-side"><span class="chapter-number">03</span><i class="fa-solid fa-chevron-down chapter-chevron"></i></span>
+        </button>
+        <div class="nav-submenu">
+          <button class="nav-subitem" data-target="how" title="Как это работает"><span class="sub-icon"><i class="fa-solid fa-route"></i></span><span class="sub-copy"><strong>Как это работает</strong><small>Этапы анализа</small></span></button>
+          <button class="nav-subitem" data-target="help" title="Помощь"><span class="sub-icon"><i class="fa-solid fa-circle-question"></i></span><span class="sub-copy"><strong>Помощь</strong><small>Форматы и ответы</small></span></button>
+        </div>
+      </div>
       <button class="mobile-more-toggle" id="mobileMoreBtn" type="button" title="Ещё"><i class="fa-solid fa-ellipsis"></i><span>Ещё</span></button>
     </nav>
     <div class="sidebar-tools">
@@ -327,14 +407,12 @@
   </aside>
 
   <main class="main">
-    <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
     <header class="topbar">
       <div class="page-context">
-        <div class="chapter-switcher" aria-label="Переход между разделами"><button id="prevSectionBtn" type="button" title="Предыдущий раздел"><i class="fa-solid fa-chevron-left"></i></button><button id="nextSectionBtn" type="button" title="Следующий раздел"><i class="fa-solid fa-chevron-right"></i></button></div>
         <div class="page-label"><strong id="pageTitle">Обзор</strong><div class="muted" id="pageSubtitle" style="font-size:.72rem">Главные показатели и быстрые действия</div></div>
       </div>
       <div class="topbar-actions">
-        <label class="global-search" for="globalSearch" title="Поиск по сайту и найденным подпискам"><i class="fa-solid fa-magnifying-glass"></i><input id="globalSearch" autocomplete="off" placeholder="Поиск" aria-label="Поиск"><span class="search-key">⌘ K</span></label>
+        <label class="global-search" for="globalSearch" title="Поиск по сайту и найденным подпискам"><i class="fa-solid fa-magnifying-glass"></i><input id="globalSearch" autocomplete="off" placeholder="Поиск" aria-label="Поиск"></label>
         <button class="icon-btn" id="themeBtn" type="button" title="Сменить тему" aria-label="Сменить тему"><i class="fa-solid fa-moon"></i></button>
         <button class="btn primary small" data-go="scanner"><i class="fa-solid fa-plus"></i><span>Новый анализ</span></button>
       </div>
@@ -346,7 +424,7 @@
           <div class="hero-card">
             <div class="eyebrow">Полный аудит выписки + DeepSeek V4 Pro</div>
             <h1>Понимайте <span style="color:var(--green2)">каждую операцию</span></h1>
-            <p>Сканер проверяет каждую строку выписки: дату, сумму до копеек, название получателя и исходное описание. Итоги считаются в копейках без потери точности, а AI вторым проходом сверяет распознанные поля с исходной строкой и отдельно подтверждает подписки.</p>
+            <p>Сканер проверяет каждую строку выписки: дату, сумму до копеек, название получателя и исходное описание. Затем AI анализирует регулярность, смену цены, день списания, merchant и контекст описаний; неоднозначные подписки проходят второй независимый AI-проход.</p>
             <div class="hero-proof">
               <span><i class="fa-solid fa-circle-check"></i> Пополнения ≠ подписки</span>
               <span><i class="fa-solid fa-calculator"></i> Суммы считаются до копеек</span>
@@ -381,11 +459,11 @@
       </section>
 
       <section id="scanner" class="section view">
-        <div class="section-heading"><div><h2>Новый анализ</h2><p>Загрузите выписку — сначала локальный аудит проверит все даты, суммы, названия и описания, затем DeepSeek перепроверит их по исходным строкам и отдельно проанализирует подписки.</p></div><div class="section-index"><b>02</b> / 07</div></div>
+        <div class="section-heading"><div><h2>Новый анализ</h2><p>Загрузите выписку — локальный аудит проверит даты, суммы, названия и описания, DeepSeek сверит строки с источником, а подписки пройдут расширенный анализ регулярности и повторную проверку неоднозначных случаев.</p></div><div class="section-index"><b>02</b> / 07</div></div>
         <div class="workspace">
           <div class="card">
             <div class="card-title"><h3><i class="fa-solid fa-file-arrow-up"></i> Файл выписки</h3><span class="pill local">локальный парсинг</span></div>
-            <div class="dropzone" id="dropzone"><div class="scanline"></div><input id="fileInput" type="file" accept=".csv,.xls,.xlsx,.pdf"><div><div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div><strong id="dropTitle">Перетащите файл или нажмите</strong><div class="file-types">PDF · CSV · XLS · XLSX</div><div class="muted" style="font-size:.78rem;margin-top:10px">PDF читается по строкам и координатам текста. Для скан-фото по-прежнему нужен OCR.</div></div></div>
+            <div class="dropzone" id="dropzone"><div class="scanline"></div><input id="fileInput" type="file" accept=".csv,.tsv,.txt,.json,.ofx,.qfx,.xls,.xlsx,.pdf"><div><div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div><strong id="dropTitle">Перетащите файл или нажмите</strong><div class="file-types">PDF · CSV · TSV · TXT · JSON · OFX/QFX · XLS · XLSX</div><div class="muted" style="font-size:.78rem;margin-top:10px">Автоопределение кодировки и разделителя, чтение всех листов Excel и склейка многострочных операций PDF. Для PDF-сканов без текстового слоя нужен OCR.</div></div></div>
             <div class="progress-wrap hidden" id="progressWrap"><div class="progress"><span id="progressBar"></span></div><div class="progress-text" id="progressText"></div></div>
             <div class="settings"><div class="field"><label>Бюджет на подписки, ₽/мес</label><input id="budgetInput" type="number" value="1500" min="0"></div><button class="btn ghost" id="reanalyzeBtn"><i class="fa-solid fa-rotate"></i> Пересчитать</button></div>
             <div class="trust-box"><strong>Двойная проверка.</strong> Каждая распознанная строка сначала валидируется локально. При подключённом DeepSeek AI получает исходную строку и сверяет с ней дату, сумму, название и описание; для подписок действует отдельный Evidence Guard.</div>
@@ -511,7 +589,7 @@
 
   const state = {
     transactions: [], candidates: [], subscriptions: [], aiMode: 'local', aiConfigured: false, fileName: '',
-    filter: 'all', charts: {}, rawRows: [], activeSection: 'overview', audit: null
+    filter: 'all', charts: {}, rawRows: [], activeSection: 'overview', audit: null, subscriptionReview: null
   };
   const sectionOrder = ['overview','scanner','subscriptions','analytics','insights','how','help'];
   const sectionMeta = {
@@ -545,6 +623,7 @@
 
   function bindUI(){
     $$('.menu [data-target]').forEach(b=>b.onclick=()=>go(b.dataset.target));$$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+    $$('[data-chapter-toggle]').forEach(b=>b.onclick=()=>toggleChapter(b.dataset.chapterToggle));
     $('#themeBtn').onclick=toggleTheme;
     $('#fileInput').onchange=e=>e.target.files[0]&&handleFile(e.target.files[0]);
     const dz=$('#dropzone');
@@ -557,7 +636,6 @@
     $('#modalClose').onclick=closeModal;$('#modal').onclick=e=>e.target.id==='modal'&&closeModal();$('#exportBtn').onclick=exportJson;
     $('#clearAnalysisBtn').onclick=resetAnalysis;$('#sheetClearBtn').onclick=()=>{closeNavSheet();resetAnalysis()};
     $('#backTopBtn').onclick=()=>go('overview');
-    $('#prevSectionBtn').onclick=()=>moveSection(-1);$('#nextSectionBtn').onclick=()=>moveSection(1);
     $('#mobileMoreBtn').onclick=openNavSheet;$('#navSheetClose').onclick=closeNavSheet;$('#navSheet').onclick=e=>e.target.id==='navSheet'&&closeNavSheet();$$('[data-sheet-go]').forEach(b=>b.onclick=()=>{closeNavSheet();go(b.dataset.sheetGo)});
     $('#globalSearch').onfocus=()=>openCommandPalette($('#globalSearch').value);$('#globalSearch').oninput=()=>{if(!$('#commandPalette').classList.contains('open'))openCommandPalette($('#globalSearch').value);$('#commandSearch').value=$('#globalSearch').value;filterCommands()};
     $('#commandPalette').onclick=e=>e.target.id==='commandPalette'&&closeCommandPalette();$('#commandSearch').oninput=()=>{$('#globalSearch').value=$('#commandSearch').value;filterCommands()};
@@ -573,11 +651,12 @@
     sections.forEach(sec=>observer.observe(sec));window.addEventListener('scroll',updateScrollUI,{passive:true});
   }
 
-  function setActiveSection(id,fromScroll=false){if(!sectionOrder.includes(id))return;state.activeSection=id;$$('.menu [data-target]').forEach(b=>b.classList.toggle('active',b.dataset.target===id));const meta=sectionMeta[id]||[id,''];$('#pageTitle').textContent=meta[0];$('#pageSubtitle').textContent=meta[1];const i=sectionOrder.indexOf(id);$('#prevSectionBtn').disabled=i<=0;$('#nextSectionBtn').disabled=i>=sectionOrder.length-1;if(fromScroll&&location.hash!==`#${id}`)history.replaceState(null,'',`#${id}`)}
+  function setActiveSection(id,fromScroll=false){if(!sectionOrder.includes(id))return;state.activeSection=id;$$('.menu [data-target]').forEach(b=>{const active=b.dataset.target===id;b.classList.toggle('active',active);active?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});if(innerWidth>760)openChapterForSection(id);const meta=sectionMeta[id]||[id,''];$('#pageTitle').textContent=meta[0];$('#pageSubtitle').textContent=meta[1];if(fromScroll&&location.hash!==`#${id}`)history.replaceState(null,'',`#${id}`)}
   function go(id,updateHash=true){const el=document.getElementById(id);if(!el)return;setActiveSection(id);el.scrollIntoView({behavior:'smooth',block:'start'});if(updateHash)history.replaceState(null,'',`#${id}`)}
-  function moveSection(delta){const i=sectionOrder.indexOf(state.activeSection);const next=sectionOrder[clamp(i+delta,0,sectionOrder.length-1)];if(next&&next!==state.activeSection)go(next)}
   function toggleTheme(){document.body.classList.toggle('light');localStorage.setItem('theme',document.body.classList.contains('light')?'light':'dark');$('#themeBtn i').className=document.body.classList.contains('light')?'fa-solid fa-sun':'fa-solid fa-moon';renderCharts()}
-  function updateScrollUI(){const doc=document.documentElement;const max=Math.max(1,doc.scrollHeight-innerHeight);const p=clamp(scrollY/max*100,0,100);$('#scrollProgressBar').style.width=`${p}%`;$('#backTopBtn').classList.toggle('show',scrollY>650)}
+  function updateScrollUI(){$('#backTopBtn').classList.toggle('show',scrollY>650)}
+  function toggleChapter(name,forceOpen=null){const chapter=$(`.nav-chapter[data-chapter="${name}"]`);if(!chapter)return;const open=forceOpen===null?!chapter.classList.contains('open'):Boolean(forceOpen);chapter.classList.toggle('open',open);chapter.querySelector('.chapter-toggle')?.setAttribute('aria-expanded',String(open))}
+  function openChapterForSection(id){const btn=$(`.menu [data-target="${id}"]`),chapter=btn?.closest('.nav-chapter');if(!chapter)return;$$('.nav-chapter').forEach(x=>toggleChapter(x.dataset.chapter,x===chapter))}
   function openNavSheet(){$('#navSheet').classList.add('open');$('#navSheet').setAttribute('aria-hidden','false');document.body.classList.add('lock-scroll')}
   function closeNavSheet(){$('#navSheet').classList.remove('open');$('#navSheet').setAttribute('aria-hidden','true');if(!$('#commandPalette').classList.contains('open'))document.body.classList.remove('lock-scroll')}
   function openCommandPalette(seed=''){$('#commandPalette').classList.add('open');$('#commandPalette').setAttribute('aria-hidden','false');document.body.classList.add('lock-scroll');$('#commandSearch').value=seed||'';filterCommands();setTimeout(()=>$('#commandSearch').focus(),30)}
@@ -597,20 +676,34 @@
 
   function resetAnalysis(){
     const hadData=state.transactions.length||state.subscriptions.length;
-    state.transactions=[];state.candidates=[];state.subscriptions=[];state.aiMode='local';state.fileName='';state.filter='all';state.rawRows=[];state.audit=null;
+    state.transactions=[];state.candidates=[];state.subscriptions=[];state.aiMode='local';state.fileName='';state.filter='all';state.rawRows=[];state.audit=null;state.subscriptionReview=null;
     $('#fileInput').value='';$('#dropTitle').textContent='Перетащите файл или нажмите';$('#sourceInfo').textContent='Файл ещё не загружен';
     $$('[data-filter]').forEach(t=>t.classList.toggle('active',t.dataset.filter==='all'));
     renderAll();go('overview');toast(hadData?'Анализ очищен':'Данных для сброса пока нет');
   }
 
+  const MAX_FILE_SIZE=35*1024*1024;
+  function fileExt(file){return String(file?.name||'').split('.').pop().toLowerCase()}
+  function replacementCount(text){return (String(text).match(/�/g)||[]).length}
+  async function decodeTextFile(file){const buf=await file.arrayBuffer();let text=new TextDecoder('utf-8').decode(buf);if(replacementCount(text)>Math.max(2,text.length/500)){try{const alt=new TextDecoder('windows-1251').decode(buf);if(replacementCount(alt)<replacementCount(text))text=alt}catch{}}return text.replace(/^\uFEFF/,'')}
+  function matrixFromObjects(items){const rows=(items||[]).filter(x=>x&&typeof x==='object'&&!Array.isArray(x));if(!rows.length)return[];const keys=[...new Set(rows.flatMap(x=>Object.keys(x)))];return [keys,...rows.map(x=>keys.map(k=>x[k]??''))]}
+
   async function handleFile(file){
-    state.fileName=file.name;state.transactions=[];state.candidates=[];state.subscriptions=[];renderAll();$('#dropzone').classList.add('scanning');$('#dropTitle').textContent=file.name;
+    state.fileName=file?.name||'';state.transactions=[];state.candidates=[];state.subscriptions=[];state.audit=null;state.subscriptionReview=null;renderAll();$('#dropzone').classList.add('scanning');$('#dropTitle').textContent=state.fileName||'Файл';
     try{
-      progress(8,'Читаю файл…');const ext=file.name.split('.').pop().toLowerCase();let tx=[];
-      if(ext==='csv')tx=await parseCsv(file);else if(['xls','xlsx'].includes(ext))tx=await parseExcel(file);else if(ext==='pdf')tx=await parsePdf(file);else throw new Error('Неподдерживаемый формат');
+      if(!file||!file.size)throw new Error('Файл пустой');
+      if(file.size>MAX_FILE_SIZE)throw new Error('Файл слишком большой. Максимум 35 МБ.');
+      progress(8,'Читаю файл и определяю формат…');const ext=fileExt(file);let tx=[];
+      if(['csv','tsv'].includes(ext))tx=await parseDelimited(file,ext==='tsv'?'\t':'');
+      else if(ext==='txt')tx=await parseTextStatement(file);
+      else if(ext==='json')tx=await parseJsonStatement(file);
+      else if(['ofx','qfx'].includes(ext))tx=await parseOfx(file);
+      else if(['xls','xlsx'].includes(ext))tx=await parseExcel(file);
+      else if(ext==='pdf')tx=await parsePdf(file);
+      else throw new Error('Неподдерживаемый формат. Используйте PDF, CSV/TSV/TXT, JSON, OFX/QFX, XLS или XLSX.');
       state.transactions=tx.map((t,i)=>enrichTransaction({...t,id:t.id||`tx_${i}`}));
       progress(32,`Распознано строк: ${state.transactions.length}. Проверяю даты, суммы и описания…`);
-      if(!state.transactions.length)throw new Error('Не удалось распознать операции. Проверьте столбцы даты/суммы или текстовый слой PDF.');
+      if(!state.transactions.length)throw new Error('Не удалось распознать операции. Проверьте формат, столбцы даты/суммы или текстовый слой PDF.');
       state.audit=buildStatementAudit(state.transactions);
       await runAiStatementAudit();
       state.audit=buildStatementAudit(state.transactions,state.audit?.ai||null);
@@ -619,14 +712,18 @@
     finally{$('#dropzone').classList.remove('scanning');finishProgress()}
   }
 
-  async function parseCsv(file){return new Promise((resolve,reject)=>Papa.parse(file,{skipEmptyLines:'greedy',complete:r=>{try{resolve(normalizeMatrix(r.data))}catch(e){reject(e)}},error:reject}))}
-  async function parseExcel(file){const buf=await file.arrayBuffer();const wb=XLSX.read(buf,{type:'array',cellDates:true});let all=[];for(const name of wb.SheetNames){const matrix=XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,raw:false,defval:''});all.push(...normalizeMatrix(matrix))}return all}
-  async function parsePdf(file){const buf=await file.arrayBuffer();const pdf=await pdfjsLib.getDocument({data:buf}).promise;let lines=[];for(let p=1;p<=pdf.numPages;p++){progress(10+Math.round((p/pdf.numPages)*18),`PDF: страница ${p} из ${pdf.numPages}`);const page=await pdf.getPage(p);const content=await page.getTextContent();const groups=new Map();for(const item of content.items){const y=Math.round((item.transform?.[5]||0)/2)*2;if(!groups.has(y))groups.set(y,[]);groups.get(y).push({x:item.transform?.[4]||0,text:item.str})}const pageLines=[...groups.entries()].sort((a,b)=>b[0]-a[0]).map(([,items])=>items.sort((a,b)=>a.x-b.x).map(i=>i.text).join(' ').replace(/\s+/g,' ').trim()).filter(Boolean);lines.push(...pageLines)}return normalizePdfLines(lines)}
+  async function parseDelimited(file,delimiter=''){const text=await decodeTextFile(file);return new Promise((resolve,reject)=>Papa.parse(text,{delimiter,skipEmptyLines:'greedy',dynamicTyping:false,complete:r=>{try{resolve(normalizeMatrix(r.data))}catch(e){reject(e)}},error:reject}))}
+  async function parseTextStatement(file){const text=await decodeTextFile(file),lines=text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);const sample=lines.slice(0,12).join('\n');if(/\t/.test(sample))return new Promise((resolve,reject)=>Papa.parse(text,{delimiter:'\t',skipEmptyLines:'greedy',complete:r=>{try{resolve(normalizeMatrix(r.data))}catch(e){reject(e)}},error:reject}));if((sample.match(/;/g)||[]).length>5)return new Promise((resolve,reject)=>Papa.parse(text,{delimiter:';',skipEmptyLines:'greedy',complete:r=>{try{resolve(normalizeMatrix(r.data))}catch(e){reject(e)}},error:reject}));return normalizePdfLines(stitchStatementLines(lines))}
+  async function parseJsonStatement(file){const text=await decodeTextFile(file);let data;try{data=JSON.parse(text)}catch{throw new Error('JSON не удалось прочитать')};let items=Array.isArray(data)?data:(data?.transactions||data?.operations||data?.items||data?.data||[]);if(!Array.isArray(items))throw new Error('В JSON не найден массив transactions/operations/items/data');if(items.length&&Array.isArray(items[0]))return normalizeMatrix(items);return normalizeMatrix(matrixFromObjects(items))}
+  async function parseOfx(file){const text=await decodeTextFile(file),blocks=[...text.matchAll(/<STMTTRN>([\s\S]*?)(?=<STMTTRN>|<\/BANKTRANLIST>|$)/gi)].map(m=>m[1]),out=[];const tag=(b,n)=>{const m=b.match(new RegExp(`<${n}>([^<\\r\\n]+)`,'i'));return m?m[1].trim():''};for(const b of blocks){const rawDate=tag(b,'DTPOSTED')||tag(b,'DTUSER'),dm=rawDate.match(/^(\d{4})(\d{2})(\d{2})/);if(!dm)continue;const date=parseDate(`${dm[1]}-${dm[2]}-${dm[3]}`),signed=parseMoney(tag(b,'TRNAMT'));if(!date||!Number.isFinite(signed)||signed===0)continue;const name=tag(b,'NAME'),memo=tag(b,'MEMO'),type=tag(b,'TRNTYPE'),desc=cleanDescription([name,memo,type].filter(Boolean).join(' · '));if(desc.length<2)continue;out.push(makeTx(out.length,date,Math.abs(signed),desc,signed<0,{raw:[b],directionSource:'ofx-signed'}))}return out}
+  async function parseExcel(file){const buf=await file.arrayBuffer();const wb=XLSX.read(buf,{type:'array',cellDates:true});let all=[];for(let i=0;i<wb.SheetNames.length;i++){const name=wb.SheetNames[i];progress(10+Math.round(((i+1)/Math.max(wb.SheetNames.length,1))*12),`Excel: лист ${i+1} из ${wb.SheetNames.length}`);const matrix=XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,raw:false,defval:'',blankrows:false});all.push(...normalizeMatrix(matrix))}return all}
+  function stitchStatementLines(lines){const dateRe=/\b(?:\d{2}[.\/-]\d{2}[.\/-]\d{2,4}|\d{4}[.\/-]\d{2}[.\/-]\d{2})\b/,out=[];let current='';for(const line of lines){if(dateRe.test(line)){if(current)out.push(current);current=line}else if(current&&current.length<650&&!/^(итого|баланс|остаток|страница|page\b)/i.test(line)){current+=` ${line}`}}if(current)out.push(current);return out}
+  async function parsePdf(file){const buf=await file.arrayBuffer();const pdf=await pdfjsLib.getDocument({data:buf}).promise;let lines=[];for(let p=1;p<=pdf.numPages;p++){progress(10+Math.round((p/pdf.numPages)*18),`PDF: страница ${p} из ${pdf.numPages}`);const page=await pdf.getPage(p);const content=await page.getTextContent();const groups=new Map();for(const item of content.items){const y=Math.round((item.transform?.[5]||0)/2)*2;if(!groups.has(y))groups.set(y,[]);groups.get(y).push({x:item.transform?.[4]||0,text:item.str})}const pageLines=[...groups.entries()].sort((a,b)=>b[0]-a[0]).map(([,items])=>items.sort((a,b)=>a.x-b.x).map(i=>i.text).join(' ').replace(/\s+/g,' ').trim()).filter(Boolean);lines.push(...pageLines)}return normalizePdfLines(stitchStatementLines(lines))}
 
   function normalizeMatrix(matrix){
     const rows=(matrix||[]).map(r=>Array.isArray(r)?r.map(v=>String(v??'').trim()):[]).filter(r=>r.some(Boolean));if(!rows.length)return[];
     const dateRe=/(дата|date|дата операции|дата транзакции)/i, amountRe=/(сумм|amount|дебет|debit|кредит|credit|расход|приход|списан|зачислен)/i;
-    let headerIndex=-1,best=-1;rows.slice(0,45).forEach((r,i)=>{let score=0;r.forEach(c=>{if(dateRe.test(c))score+=3;if(amountRe.test(c))score+=2;if(/опис|назнач|merchant|операц|description|получател|контрагент/i.test(c))score+=1});if(score>best&&score>=5){best=score;headerIndex=i}});
+    let headerIndex=-1,best=-1;rows.slice(0,90).forEach((r,i)=>{let score=0;r.forEach(c=>{if(dateRe.test(c))score+=3;if(amountRe.test(c))score+=2;if(/опис|назнач|merchant|операц|description|получател|контрагент/i.test(c))score+=1});if(score>best&&score>=5){best=score;headerIndex=i}});
     const hasHeader=headerIndex>=0,header=hasHeader?rows[headerIndex].map(x=>x.toLowerCase()):[];
     const idx=patterns=>header.findIndex(h=>patterns.some(re=>re.test(h)));
     const dateI=idx([/^дата$/, /дата.*операц/, /дата.*транз/, /^date$/, /transaction.*date/]);
@@ -750,12 +847,13 @@
     ['Финансы','Финансовая услуга',/комисси|bank fee|страхов|insurance|broker|брокер|тинькофф.*pro|tinkoff.*pro/i],
     ['Услуги','Услуга',/салон|парикмах|barber|барбер|ремонт|service|сервис|ателье|химчист|cleaning|клининг|фото|юрист|нотари|мастер|маникюр|beauty|spa\b/i]
   ];
-  const SUBSCRIPTION_STRONG=/яндекс.*плюс|yandex.*plus|netflix|spotify|kinopoisk|кинопоиск|ivi\b|okko|premier|wink\b|icloud|google one|cloud[ .]?mail|dropbox|onedrive|adobe|microsoft\s*365|office\s*365|notion|canva|figma|chatgpt|openai|github|jetbrains|vpn\b|hosting|хостинг|telegram premium|vk combo|bookmate|букмейт|литрес|fitness|фитнес|world class|ddx|абонентск|ежемесячн.*плат|подписк|subscription/i;
+  const SUBSCRIPTION_STRONG=/яндекс.*плюс|yandex.*plus|netflix|spotify|kinopoisk|кинопоиск|ivi\b|okko|premier|wink\b|icloud|google one|cloud[ .]?mail|dropbox|onedrive|adobe|microsoft\s*365|office\s*365|notion|canva|figma|chatgpt|openai|github|jetbrains|vpn\b|hosting|хостинг|telegram premium|youtube.*premium|sberprime|сберпрайм|amazon.*prime|ozon.*premium|tinkoff.*pro|vk combo|bookmate|букмейт|литрес|fitness|фитнес|world class|ddx|абонентск|ежемесячн.*плат|подписк|subscription/i;
+  const SUBSCRIPTION_EXPLICIT=/подписк|subscription|recurring|autopay|автоплат|автоспис|membership|member fee|абонентск|регулярн.*плат|ежемесячн.*плат|ежегодн.*плат|premium\b|prime\b|pro plan|тариф/i;
   const PERSON_TRANSFER=/перевод|сбп|card2card|p2p|перевод.*кар/i;
   const CASH=/банкомат|atm\b|снятие налич|выдача налич/i;
 
   function enrichTransaction(t){
-    const d=t.description.toLowerCase(),directionSource=t.meta?.directionSource||'unknown',lockedDirection=['column-debit','column-credit','signed','header','ai-source-verified'].includes(directionSource);let direction=t.isExpense===false?'income':t.isExpense===true?'expense':null;
+    const d=t.description.toLowerCase(),directionSource=t.meta?.directionSource||'unknown',lockedDirection=['column-debit','column-credit','signed','header','ofx-signed','ai-source-verified'].includes(directionSource);let direction=t.isExpense===false?'income':t.isExpense===true?'expense':null;
     const inferred=inferDirection(d);if(!lockedDirection&&inferred!==null)direction=inferred?'expense':'income';if(!direction)direction='expense';
     const merchantName=t.merchantName||extractMerchantName(t.description),directionConfidence=lockedDirection?'high':directionSource==='text'?'medium':'low';
     let category='Другое',type='Расход';
@@ -767,61 +865,68 @@
       else if(/процент|interest/.test(d))type='Проценты';
       else if(/перевод\s+от|сбп\s+от|пополнен|входящ|поступлен|transfer/.test(d))type='Пополнение / перевод';
       else type='Пополнение';
-      return {...t,isExpense:false,direction,category,type,merchantName,directionConfidence,subscriptionHint:false,subscriptionVeto:true,subscriptionName:''};
+      return {...t,isExpense:false,direction,category,type,merchantName,directionConfidence,subscriptionHint:false,explicitRecurring:false,subscriptionVeto:true,subscriptionName:''};
     }
     if(PERSON_TRANSFER.test(d)){category='Переводы';type='Перевод';}
     else if(CASH.test(d)){category='Наличные';type='Наличные';}
     else{for(const [cat,label,re] of CATEGORY_RULES){if(re.test(d)){category=cat;type=label;break}}}
-    const veto=['Рестораны и кафе','Продукты','Товары и покупки','Такси','Транспорт','Доставка','Здоровье','Услуги','Переводы','Наличные'].includes(category);
-    const hint=SUBSCRIPTION_STRONG.test(d)||(['Связь','Фитнес','Кино и видео','Музыка','Облако','Софт','Книги','Игры'].includes(category)&&/автоплат|ежемесяч|subscription|подпис/i.test(d));
-    return {...t,isExpense:true,direction,category,type,merchantName,directionConfidence,subscriptionHint:hint,subscriptionVeto:veto,subscriptionName:''};
+    const explicitRecurring=SUBSCRIPTION_EXPLICIT.test(d),strongService=SUBSCRIPTION_STRONG.test(d),hint=strongService||explicitRecurring||(['Связь','Фитнес','Кино и видео','Музыка','Облако','Софт','Книги','Игры','Финансы','Образование'].includes(category)&&/автоплат|ежемесяч|ежегод|subscription|подпис|membership|premium|prime|тариф/i.test(d));
+    const hardVeto=['Переводы','Наличные'].includes(category),ordinaryPurchase=['Рестораны и кафе','Продукты','Товары и покупки','Такси','Транспорт','Доставка','Здоровье','Услуги'].includes(category),veto=hardVeto||(ordinaryPurchase&&!explicitRecurring&&!strongService);
+    return {...t,isExpense:true,direction,category,type,merchantName,directionConfidence,subscriptionHint:hint,explicitRecurring,subscriptionVeto:veto,subscriptionName:''};
   }
 
-  function merchantKey(desc){return desc.toUpperCase().normalize('NFKD').replace(/\b(POS|PURCHASE|PAYMENT|CARD|MOBILE|ONLINE|ECOM|E-COM|RUS|RU|MOSCOW|SPB|SBERBANK|SBP)\b/g,' ').replace(/\b\d{3,}\b/g,' ').replace(/[^A-ZА-ЯЁ0-9]+/g,' ').replace(/\s+/g,' ').trim().slice(0,90)}
+  function merchantKey(desc){return desc.toUpperCase().normalize('NFKD').replace(/\b(POS|PURCHASE|PAYMENT|CARD|MOBILE|ONLINE|ECOM|E-COM|RUS|RU|MOSCOW|SPB|SBERBANK|SBP|RUSSIA)\b/g,' ').replace(/\b\d{3,}\b/g,' ').replace(/[^A-ZА-ЯЁ0-9]+/g,' ').replace(/\s+/g,' ').trim().slice(0,100)}
   function trigrams(s){const p=`  ${s.toLowerCase()}  `,set=new Set();for(let i=0;i<p.length-2;i++)set.add(p.slice(i,i+3));return set}
   function similarity(a,b){if(a===b)return 1;const A=trigrams(a),B=trigrams(b);let inter=0;A.forEach(x=>B.has(x)&&inter++);return(2*inter)/(A.size+B.size||1)}
   function median(a){const s=[...a].sort((x,y)=>x-y),m=Math.floor(s.length/2);return s.length%2?s[m]:(s[m-1]+s[m])/2}
   function days(a,b){return Math.abs((b-a)/86400000)}
-  function cadenceFromIntervals(ints){if(!ints.length)return{label:'неизвестно',score:0};const m=median(ints);if(m>=5&&m<=9)return{label:'еженедельно',score:.82};if(m>=12&&m<=16)return{label:'раз в 2 недели',score:.88};if(m>=25&&m<=35)return{label:'ежемесячно',score:1};if(m>=55&&m<=70)return{label:'раз в 2 месяца',score:.85};if(m>=80&&m<=100)return{label:'ежеквартально',score:.9};if(m>=330&&m<=400)return{label:'ежегодно',score:.92};return{label:`≈ ${Math.round(m)} дн.`,score:Math.max(.2,1-Math.min(1,Math.abs(m-30)/55))}}
+  function cadenceFromIntervals(ints){if(!ints.length)return{label:'явная подписка',score:.35,median_days:0};const m=median(ints);if(m>=5&&m<=9)return{label:'еженедельно',score:.9,median_days:m};if(m>=12&&m<=16)return{label:'раз в 2 недели',score:.92,median_days:m};if(m>=24&&m<=38)return{label:'ежемесячно',score:1,median_days:m};if(m>=50&&m<=75)return{label:'раз в 2 месяца',score:.88,median_days:m};if(m>=78&&m<=105)return{label:'ежеквартально',score:.92,median_days:m};if(m>=320&&m<=410)return{label:'ежегодно',score:.94,median_days:m};return{label:`≈ ${Math.round(m)} дн.`,score:Math.max(.2,1-Math.min(1,Math.abs(m-30)/70)),median_days:m}}
   function likelyExpense(t){return t.direction==='expense'&&t.isExpense!==false}
   function modeCategory(items){const counts={};items.forEach(x=>counts[x.category]=(counts[x.category]||0)+1);return Object.entries(counts).sort((a,b)=>b[1]-a[1])[0]?.[0]||'Другое'}
+  function recurringSignals(items){const text=items.map(x=>x.description).join(' ').toLowerCase(),signals=[];if(SUBSCRIPTION_EXPLICIT.test(text))signals.push('explicit_recurring_text');if(SUBSCRIPTION_STRONG.test(text))signals.push('known_subscription_service');if(/premium|pro\b|plus\b|плюс|тариф|membership|абонемент/i.test(text))signals.push('plan_or_membership');return signals}
+  function calendarConsistency(items){if(items.length<2)return 0;const daysOfMonth=items.map(x=>x.date.getDate()),med=median(daysOfMonth),dev=median(daysOfMonth.map(x=>Math.abs(x-med)));return clamp(1-dev/8,0,1)}
+  function amountProfile(items){const amounts=items.map(x=>x.amount),med=median(amounts),min=Math.min(...amounts),max=Math.max(...amounts),spread=(max-min)/Math.max(med,1),first=amounts[0],last=amounts.at(-1),change=(last-first)/Math.max(first,1);return{median:roundMoney(med),min:roundMoney(min),max:roundMoney(max),spread:roundMoney(spread),price_change_pct:roundMoney(change*100)}}
 
   function buildCandidates(transactions){
-    const pool=transactions.filter(t=>likelyExpense(t)&&!t.subscriptionVeto).slice(0,12000),groups=[];
-    for(const t of pool){const key=merchantKey(t.merchantName||t.description);if(key.length<2)continue;let best=null,bestScore=0;for(const g of groups){const amountRatio=Math.abs(t.amount-g.medAmount)/Math.max(t.amount,g.medAmount,1);if(amountRatio>.22)continue;const s=similarity(key,g.key);if(s>bestScore){bestScore=s;best=g}}if(best&&bestScore>=.72){best.items.push(t);best.medAmount=median(best.items.map(x=>x.amount));if(key.length<best.key.length)best.key=key}else groups.push({key,items:[t],medAmount:t.amount})}
+    const pool=transactions.filter(t=>likelyExpense(t)&&!t.subscriptionVeto),groups=[];
+    for(const t of pool){const merchant=merchantKey(t.merchantName||t.description),descKey=merchantKey(t.description);if(merchant.length<2)continue;let best=null,bestScore=0;for(const g of groups){const merchantScore=similarity(merchant,g.merchant),descScore=similarity(descKey,g.descKey),hintBoost=(t.subscriptionHint||g.hasHint)&&merchantScore>=.62?.12:0,score=Math.max(merchantScore*.78+descScore*.22,merchantScore+hintBoost);if(score>bestScore){bestScore=score;best=g}}if(best&&bestScore>=.72){best.items.push(t);best.hasHint=best.hasHint||t.subscriptionHint;if(descKey.length<best.descKey.length)best.descKey=descKey}else groups.push({merchant,descKey,items:[t],hasHint:t.subscriptionHint})}
     const candidates=[];let idx=0;
     for(const g of groups){
-      if(g.items.length<2)continue;const items=[...g.items].sort((a,b)=>a.date-b.date);const uniqueDates=[...new Map(items.map(x=>[x.date.toISOString().slice(0,10),x])).values()];if(uniqueDates.length<2)continue;
-      const intervals=uniqueDates.slice(1).map((x,i)=>days(uniqueDates[i].date,x.date)),cadence=cadenceFromIntervals(intervals);if(cadence.score<.55&&items.length<3)continue;
-      const amounts=items.map(x=>x.amount),med=median(amounts),spread=Math.max(...amounts.map(x=>Math.abs(x-med)/Math.max(med,1))),regularity=1-Math.min(1,median(intervals.map(x=>Math.abs(x-median(intervals))))/12);
-      let conf=.34+Math.min(.28,(items.length-2)*.07)+cadence.score*.22+regularity*.12+(spread<.05?.08:spread<.15?.04:0);conf=clamp(conf,0,.98);if(conf<.58)continue;
-      const localCategory=modeCategory(items),localHint=items.some(x=>x.subscriptionHint)||(['Связь','Фитнес','Кино и видео','Музыка','Облако','Софт','Книги','Игры'].includes(localCategory)&&cadence.score>=.8);
-      const evidence=items.slice(-18).map(x=>({transaction_id:x.id,date:x.date.toISOString().slice(0,10),amount:x.amount,merchant_name:x.merchantName,description:x.description}));
-      candidates.push({candidate_id:`cand_${idx++}`,merchant_key:g.key,suggested_name:guessName(items),cadence:cadence.label,confidence:conf,typical_amount:roundMoney(med),observed_total:sumMoney(items),first_date:items[0].date.toISOString().slice(0,10),last_date:items.at(-1).date.toISOString().slice(0,10),local_category:localCategory,local_subscription_hint:localHint,local_veto:false,evidence});
+      const items=[...g.items].sort((a,b)=>a.date-b.date),explicit=items.some(x=>x.explicitRecurring),signals=recurringSignals(items);if(items.length<2&&!explicit)continue;
+      const uniqueDates=[...new Map(items.map(x=>[x.date.toISOString().slice(0,10),x])).values()],intervals=uniqueDates.slice(1).map((x,i)=>days(uniqueDates[i].date,x.date)),cadence=cadenceFromIntervals(intervals),calendarScore=calendarConsistency(uniqueDates),amount=amountProfile(items);
+      const intervalMad=intervals.length?median(intervals.map(x=>Math.abs(x-median(intervals)))):0,regularity=intervals.length?clamp(1-intervalMad/18,0,1):0;
+      if(items.length>=2&&cadence.score<.42&&!explicit&&items.length<3)continue;
+      let conf=.28+Math.min(.24,Math.max(0,items.length-1)*.055)+cadence.score*.2+regularity*.1+calendarScore*.08+(signals.includes('known_subscription_service')?.12:0)+(explicit?.16:0)+(amount.spread<.08?.06:amount.spread<.35?.025:0);if(items.length===1&&explicit)conf=Math.max(conf,.72);conf=clamp(conf,0,.98);if(conf<.5)continue;
+      const localCategory=modeCategory(items),localHint=items.some(x=>x.subscriptionHint)||explicit||(['Связь','Фитнес','Кино и видео','Музыка','Облако','Софт','Книги','Игры','Финансы'].includes(localCategory)&&cadence.score>=.78);
+      const evidence=items.slice(-24).map(x=>({transaction_id:x.id,date:x.date.toISOString().slice(0,10),amount:x.amount,merchant_name:x.merchantName,description:x.description}));
+      candidates.push({candidate_id:`cand_${idx++}`,merchant_key:g.merchant,suggested_name:guessName(items),cadence:cadence.label,confidence:conf,typical_amount:amount.median,observed_total:sumMoney(items),first_date:items[0].date.toISOString().slice(0,10),last_date:items.at(-1).date.toISOString().slice(0,10),local_category:localCategory,local_subscription_hint:localHint,local_veto:false,explicit_recurring_signal:explicit,candidate_kind:items.length===1?'single_explicit':'recurring',interval_days:intervals.map(x=>Math.round(x*10)/10),median_interval_days:roundMoney(cadence.median_days||0),interval_mad:roundMoney(intervalMad),day_of_month_consistency:roundMoney(calendarScore),amount_min:amount.min,amount_max:amount.max,amount_spread:amount.spread,price_change_pct:amount.price_change_pct,recurring_signals:signals,evidence});
     }
     return candidates.sort((a,b)=>b.confidence-a.confidence);
   }
   function guessName(items){const names=items.map(x=>x.merchantName||extractMerchantName(x.description)).filter(Boolean);const counts={};names.forEach(n=>counts[n]=(counts[n]||0)+1);return Object.entries(counts).sort((a,b)=>b[1]-a[1]||a[0].length-b[0].length)[0]?.[0]?.slice(0,90)||'Регулярный платёж'}
-  function localFallbackSubscriptions(){return state.candidates.filter(c=>c.local_subscription_hint&&!c.local_veto).map(c=>({...c,name:c.suggested_name,category:c.local_category||'Другое',reason:'Локально найдены признаки подписочного/регулярного сервиса. Обычные покупки и пополнения исключены.',confidence:clamp(c.confidence-.04,0,.96),source:'Локальный алгоритм'}))}
+  function localFallbackSubscriptions(){return state.candidates.filter(c=>c.local_subscription_hint&&!c.local_veto&&(c.evidence.length>=2||c.explicit_recurring_signal)).map(c=>({...c,name:c.suggested_name,category:c.local_category||'Другое',classification:c.candidate_kind==='single_explicit'?'явная подписка':'регулярный сервис',reason:c.evidence.length===1?'В описании есть явный признак подписки/регулярного платежа. AI не подключён, поэтому результат отмечен консервативно.':'Локально найдены признаки регулярного сервиса по merchant, датам и описаниям. Обычные покупки и пополнения исключены.',confidence:clamp(c.confidence-.05,0,.94),source:'Локальный алгоритм'}))}
+
+  const CLASSIFICATION_LABELS={digital_subscription:'цифровая подписка',membership:'членство / абонемент',telecom_plan:'тариф связи',cloud_or_software:'облако / софт',media_subscription:'медиа-подписка',fitness_membership:'фитнес-абонемент',recurring_bill:'регулярный счёт',insurance_or_finance:'финансовая услуга',education_subscription:'образовательная подписка',possible_subscription:'возможная подписка',not_subscription:'не подписка'};
+  function classificationLabel(value){return CLASSIFICATION_LABELS[value]||String(value||'регулярный сервис').replace(/_/g,' ')}
 
   async function analyzeTransactions(){
     progress(48,'Строки проверены. Ищу регулярность и сверяю подписки…');state.candidates=buildCandidates(state.transactions);
-    if(!state.candidates.length){state.subscriptions=[];state.aiMode='local';markSubscriptions();progress(100,'Готово: операции классифицированы, подписки не найдены');renderAll();toast('Операции распознаны. Уверенных подписок не найдено');return}
+    if(!state.candidates.length){state.subscriptions=[];state.aiMode='local';state.subscriptionReview={reviewed_count:0,second_pass_count:0};markSubscriptions();progress(100,'Готово: операции классифицированы, подписки не найдены');renderAll();toast('Операции распознаны. Уверенных подписок не найдено');return}
     progress(68,`Кандидатов на подписку: ${state.candidates.length}. Проверяю…`);let ai=null;
-    try{const r=await fetch('/api/deepseek/validate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({candidates:state.candidates})});if(!r.ok)throw new Error('AI недоступен');ai=await r.json()}catch(e){console.warn(e)}
+    try{const r=await fetch('/api/deepseek/validate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({candidates:state.candidates})});if(!r.ok)throw new Error('AI недоступен');ai=await r.json();state.subscriptionReview={reviewed_count:Number(ai.reviewed_count||0),second_pass_count:Number(ai.second_pass_count||0),message:ai.message||''}}catch(e){console.warn(e);state.subscriptionReview={reviewed_count:0,second_pass_count:0,message:'AI недоступен'}}
     const byId=new Map(state.candidates.map(c=>[c.candidate_id,c]));let result=[];
-    if(ai?.subscriptions){state.aiMode=ai.mode||'local';for(const a of ai.subscriptions){const c=byId.get(a.candidate_id);if(!c||a.is_subscription!==true||c.local_veto)continue;result.push({...c,name:a.name||c.suggested_name,category:a.category||c.local_category||'Другое',reason:a.reason||'',confidence:clamp(c.confidence+Number(a.confidence_adjustment||0),0,.99),source:ai.mode==='deepseek'?'DeepSeek + evidence':'Локальный алгоритм'})}}
+    if(ai?.subscriptions){state.aiMode=ai.mode||'local';for(const a of ai.subscriptions){const c=byId.get(a.candidate_id);if(!c||a.is_subscription!==true||c.local_veto)continue;result.push({...c,name:a.name||c.suggested_name,category:a.category||c.local_category||'Другое',classification:a.classification||'регулярный сервис',billing_cycle:a.billing_cycle||c.cadence,price_change_detected:a.price_change_detected===true,ai_confidence:Number(a.ai_confidence||0),review_passes:Number(a.review_passes||1),reason:a.reason||'',confidence:clamp(c.confidence+Number(a.confidence_adjustment||0),0,.99),source:ai.mode==='deepseek'?'DeepSeek · 2-pass evidence':'Локальный алгоритм'})}}
     else{state.aiMode='local';result=localFallbackSubscriptions()}
     state.subscriptions=result;markSubscriptions();progress(100,`Готово: ${state.transactions.length} операций, ${result.length} подписок`);renderAll();toast(`Анализ завершён: ${state.transactions.length} операций, ${result.length} подписок`);
   }
 
   function markSubscriptions(){const map=new Map();state.subscriptions.forEach(s=>s.evidence.forEach(e=>map.set(e.transaction_id,s.name)));state.transactions=state.transactions.map(t=>({...t,subscriptionName:map.get(t.id)||''}))}
-  function renderAll(){renderKpi();renderStatementAudit();renderTable();renderFullList();renderCharts();renderInsights();renderHealth();$('#sourceInfo').textContent=state.fileName?`${state.fileName} · ${state.transactions.length} строк · ${state.audit?.ai?.mode==='deepseek'?'AI-аудит выписки':'локальный аудит'} · ${state.aiMode==='deepseek'?'AI проверил подписки':'локальная проверка подписок'}`:'Файл ещё не загружен'}
+  function renderAll(){renderKpi();renderStatementAudit();renderTable();renderFullList();renderCharts();renderInsights();renderHealth();const sr=state.subscriptionReview;$('#sourceInfo').textContent=state.fileName?`${state.fileName} · ${state.transactions.length} строк · ${state.audit?.ai?.mode==='deepseek'?'AI-аудит выписки':'локальный аудит'} · ${state.aiMode==='deepseek'?`AI проверил ${sr?.reviewed_count||state.candidates.length} кандидатов${sr?.second_pass_count?`, повторно ${sr.second_pass_count}`:''}`:'локальная проверка подписок'}`:'Файл ещё не загружен'}
   function filteredSubs(){return state.subscriptions.filter(s=>state.filter==='high'?s.confidence>=.8:state.filter==='over'?s.typical_amount>500:true)}
   function monthlyEquivalent(s){const a=Number(s.typical_amount||0),c=String(s.cadence||'');if(c==='еженедельно')return a*52/12;if(c==='раз в 2 недели')return a*26/12;if(c==='ежемесячно')return a;if(c==='раз в 2 месяца')return a/2;if(c==='ежеквартально')return a/3;if(c==='ежегодно')return a/12;return a}
   function renderKpi(){const subs=roundMoney(state.subscriptions.reduce((k,s)=>k+Math.round(monthlyEquivalent(s)*100),0)/100),expenses=sumMoney(state.transactions.filter(t=>t.direction==='expense')),income=sumMoney(state.transactions.filter(t=>t.direction==='income'));$('#heroCount').textContent=state.transactions.length;$('#kpiExpenses').textContent=money(expenses);$('#kpiIncome').textContent=money(income);$('#kpiMonthly').textContent=money(subs);$('#kpiCandidates').textContent=`${state.subscriptions.length} / ${state.candidates.length}`;$('#kpiTransactions').textContent=state.transactions.length;$('#navSubsCount').textContent=state.subscriptions.length}
   function renderStatementAudit(){const el=$('#statementAudit');if(!el)return;if(!state.audit||!state.transactions.length){el.classList.add('hidden');el.innerHTML='';return}el.classList.remove('hidden');const a=state.audit,ai=a.ai,range=a.firstDate&&a.lastDate?`${a.firstDate.toLocaleDateString('ru-RU')} — ${a.lastDate.toLocaleDateString('ru-RU')}`:'—',coverage=ai?.mode==='deepseek'?`${Math.round((ai.coverage||0)*100)}% строк AI`:'локально';const warn=(a.localIssues?.length||0)+(ai?.issues?.length||0);el.innerHTML=`<div class="audit-head"><strong><i class="fa-solid fa-shield-check" style="color:var(--green2);margin-right:7px"></i>Аудит выписки</strong><span>${coverage}</span></div><div class="audit-grid"><div class="audit-item"><span>Проверено строк</span><b>${a.count}</b></div><div class="audit-item"><span>Период</span><b>${range}</b></div><div class="audit-item"><span>Расходы</span><b>${money(a.expenses)}</b></div><div class="audit-item"><span>Пополнения</span><b>${money(a.income)}</b></div></div><div class="audit-note"><i class="fa-solid ${warn?'fa-triangle-exclamation':'fa-circle-check'}"></i>${warn?`Замечаний для внимания: ${warn}. Безопасных AI-исправлений применено: ${ai?.applied||0}.`:`Даты, суммы, названия и описания прошли проверку. Возможные одинаковые строки не удаляются автоматически (${a.possibleDuplicates||0}).`}</div>`}
-  function renderTable(){const list=filteredSubs();$('#resultsEmpty').classList.toggle('hidden',list.length>0);$('#resultsArea').classList.toggle('hidden',list.length===0);$('#subsBody').innerHTML=list.map(s=>`<tr><td><div class="merchant">${escapeHtml(s.name)}</div><div class="submeta">${escapeHtml(s.category||'Другое')} · ${s.evidence.length} списаний · ≈ ${money(monthlyEquivalent(s))}/мес</div></td><td>${escapeHtml(s.cadence)}</td><td><strong>${money(s.typical_amount)}</strong></td><td><div class="confidence"><div class="confbar"><span style="width:${Math.round(s.confidence*100)}%"></span></div>${Math.round(s.confidence*100)}%</div></td><td><span class="pill ${s.source?.startsWith('DeepSeek')?'ai':'local'}">${escapeHtml(s.source||'локально')}</span></td><td><div class="row-actions"><button class="mini" data-evidence="${s.candidate_id}" title="Доказательства"><i class="fa-solid fa-eye"></i></button><button class="mini" data-letter="${s.candidate_id}" title="Письмо на отмену"><i class="fa-solid fa-envelope"></i></button></div></td></tr>`).join('');$$('[data-evidence]').forEach(b=>b.onclick=()=>openEvidence(b.dataset.evidence));$$('[data-letter]').forEach(b=>b.onclick=()=>openLetter(b.dataset.letter))}
+  function renderTable(){const list=filteredSubs();$('#resultsEmpty').classList.toggle('hidden',list.length>0);$('#resultsArea').classList.toggle('hidden',list.length===0);$('#subsBody').innerHTML=list.map(s=>`<tr><td><div class="merchant">${escapeHtml(s.name)}</div><div class="submeta">${escapeHtml(s.category||'Другое')} · ${escapeHtml(classificationLabel(s.classification))} · ${s.evidence.length} подтвержд. · ≈ ${money(monthlyEquivalent(s))}/мес${s.price_change_detected?' · цена менялась':''}</div></td><td>${escapeHtml(s.cadence)}</td><td><strong>${money(s.typical_amount)}</strong></td><td><div class="confidence"><div class="confbar"><span style="width:${Math.round(s.confidence*100)}%"></span></div>${Math.round(s.confidence*100)}%</div></td><td><span class="pill ${s.source?.startsWith('DeepSeek')?'ai':'local'}">${escapeHtml(s.source||'локально')}</span></td><td><div class="row-actions"><button class="mini" data-evidence="${s.candidate_id}" title="Доказательства"><i class="fa-solid fa-eye"></i></button><button class="mini" data-letter="${s.candidate_id}" title="Письмо на отмену"><i class="fa-solid fa-envelope"></i></button></div></td></tr>`).join('');$$('[data-evidence]').forEach(b=>b.onclick=()=>openEvidence(b.dataset.evidence));$$('[data-letter]').forEach(b=>b.onclick=()=>openLetter(b.dataset.letter))}
 
   function renderFullList(){const el=$('#fullList');if(!state.subscriptions.length){el.innerHTML='<div class="results-empty" style="min-height:160px">Подтверждённых подписок нет</div>';return}el.innerHTML=state.subscriptions.map(s=>`<div class="insight"><div style="display:flex;justify-content:space-between;gap:14px"><div><strong>${escapeHtml(s.name)}</strong><span>${escapeHtml(s.cadence)} · ${s.evidence.length} подтверждений · всего в evidence ${money(s.observed_total||sumMoney(s.evidence))} · ${Math.round(s.confidence*100)}%</span></div><div style="font-weight:900">≈ ${money(monthlyEquivalent(s))}/мес</div></div></div>`).join('')}
 
@@ -835,10 +940,10 @@
     const monthly={};state.transactions.forEach(t=>{const m=t.date.toISOString().slice(0,7);monthly[m]??={expense:0,income:0};monthly[m][t.direction==='income'?'income':'expense']+=Math.round(t.amount*100)});const months=Object.keys(monthly).sort();state.charts.monthly=new Chart($('#monthlyChart'),{type:'line',data:{labels:months,datasets:[{label:'Расходы, ₽',data:months.map(m=>monthly[m].expense/100),borderColor:colors[0],backgroundColor:'rgba(33,160,56,.10)',tension:.34,pointRadius:3},{label:'Пополнения, ₽',data:months.map(m=>monthly[m].income/100),borderColor:colors[1],backgroundColor:'rgba(72,167,255,.08)',tension:.34,pointRadius:3}]},options:{maintainAspectRatio:false,plugins:{legend:{labels:{color:text}}},scales:{x:{ticks:{color:text},grid:{display:false}},y:{beginAtZero:true,ticks:{color:text},grid:{color:grid}}}}});
     const cad={};state.subscriptions.forEach(s=>cad[s.cadence]=(cad[s.cadence]||0)+1);state.charts.cadence=new Chart($('#cadenceChart'),{type:'bar',data:{labels:Object.keys(cad),datasets:[{data:Object.values(cad),backgroundColor:colors.slice(1),borderRadius:8}]},options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:text},grid:{display:false}},y:{beginAtZero:true,ticks:{color:text,precision:0},grid:{color:grid}}}}})}
 
-  function renderInsights(){const el=$('#insightList');if(!state.transactions.length){el.innerHTML='<div class="insight"><strong>Нет анализа</strong><span>Загрузите выписку, чтобы получить объяснения.</span></div>';return}const expenses=state.transactions.filter(t=>t.direction==='expense'),income=state.transactions.filter(t=>t.direction==='income'),cats={};expenses.forEach(t=>cats[t.category]=(cats[t.category]||0)+Math.round(t.amount*100));const topCat=Object.entries(cats).sort((a,b)=>b[1]-a[1])[0];const blocks=[];if(topCat)blocks.push(`<div class="insight"><strong>Главная категория расходов — ${escapeHtml(topCat[0])}</strong><span>${money(topCat[1]/100)} по загруженной выписке.</span></div>`);if(income.length)blocks.push(`<div class="insight"><strong>Пополнения распознаны отдельно</strong><span>${income.length} входящих операций на ${money(sumMoney(income))}. Они не участвуют в поиске подписок.</span></div>`);blocks.push(`<div class="insight"><strong>Подписки: ${state.subscriptions.length}</strong><span>${state.subscriptions.length?`Подтверждённая месячная нагрузка около ${money(roundMoney(state.subscriptions.reduce((k,s)=>k+Math.round(monthlyEquivalent(s)*100),0)/100))}.`:'Обычные повторяющиеся покупки не были автоматически превращены в подписки.'}</span></div>`);state.subscriptions.slice(0,5).forEach(s=>blocks.push(`<div class="insight"><strong>${escapeHtml(s.name)} · ${money(s.typical_amount)}</strong><span>${escapeHtml(s.reason||`Повторяемость: ${s.cadence}, подтверждений: ${s.evidence.length}.`)}</span></div>`));el.innerHTML=blocks.join('')}
+  function renderInsights(){const el=$('#insightList');if(!state.transactions.length){el.innerHTML='<div class="insight"><strong>Нет анализа</strong><span>Загрузите выписку, чтобы получить объяснения.</span></div>';return}const expenses=state.transactions.filter(t=>t.direction==='expense'),income=state.transactions.filter(t=>t.direction==='income'),cats={};expenses.forEach(t=>cats[t.category]=(cats[t.category]||0)+Math.round(t.amount*100));const topCat=Object.entries(cats).sort((a,b)=>b[1]-a[1])[0];const blocks=[];if(topCat)blocks.push(`<div class="insight"><strong>Главная категория расходов — ${escapeHtml(topCat[0])}</strong><span>${money(topCat[1]/100)} по загруженной выписке.</span></div>`);if(income.length)blocks.push(`<div class="insight"><strong>Пополнения распознаны отдельно</strong><span>${income.length} входящих операций на ${money(sumMoney(income))}. Они не участвуют в поиске подписок.</span></div>`);if(state.subscriptionReview?.reviewed_count)blocks.push(`<div class="insight"><strong>AI перепроверил ${state.subscriptionReview.reviewed_count} кандидатов</strong><span>Неоднозначных случаев на втором независимом проходе: ${state.subscriptionReview.second_pass_count||0}.</span></div>`);blocks.push(`<div class="insight"><strong>Подписки: ${state.subscriptions.length}</strong><span>${state.subscriptions.length?`Подтверждённая месячная нагрузка около ${money(roundMoney(state.subscriptions.reduce((k,s)=>k+Math.round(monthlyEquivalent(s)*100),0)/100))}.`:'Обычные повторяющиеся покупки не были автоматически превращены в подписки.'}</span></div>`);state.subscriptions.slice(0,5).forEach(s=>blocks.push(`<div class="insight"><strong>${escapeHtml(s.name)} · ${money(s.typical_amount)}</strong><span>${escapeHtml(s.reason||`Повторяемость: ${s.cadence}, подтверждений: ${s.evidence.length}.`)}</span></div>`));el.innerHTML=blocks.join('')}
   function renderHealth(){const budget=Number($('#budgetInput')?.value||1500),total=roundMoney(state.subscriptions.reduce((k,s)=>k+Math.round(monthlyEquivalent(s)*100),0)/100);if(!state.subscriptions.length){$('#healthRing').textContent='—';$('#healthTitle').textContent=state.transactions.length?'Подписок не найдено':'Нет данных';$('#healthText').textContent=state.transactions.length?'Операции классифицированы, но подтверждённых регулярных списаний нет.':'Оценка зависит от бюджета и суммы регулярных платежей.';$('#miniTimeline').innerHTML='';return}let score=Math.round(clamp(100-(total/Math.max(budget,1))*48,12,98));$('#healthRing').textContent=`${score}%`;$('#healthRing').style.borderColor=score>70?'var(--green)':score>45?'var(--orange)':'var(--red)';$('#healthTitle').textContent=score>70?'Подписки под контролем':score>45?'Есть потенциал экономии':'Регулярные расходы высокие';$('#healthText').textContent=`Подтверждённые подписки: ${money(total)}/мес при бюджете ${money(budget)}.`;const vals=state.subscriptions.flatMap(s=>s.evidence).map(e=>e.amount).slice(-18),max=Math.max(...vals,1);$('#miniTimeline').innerHTML=vals.map(v=>`<div class="bar" title="${money(v)}" style="height:${Math.max(8,v/max*100)}%"></div>`).join('')}
 
-  function openEvidence(id){const s=state.subscriptions.find(x=>x.candidate_id===id);if(!s)return;$('#modalTitle').textContent=s.name;$('#modalBody').innerHTML=`<div class="trust-box" style="margin:0 0 14px"><strong>Почему это не выдумка:</strong> каждая строка ниже пришла из загруженного файла. AI мог только подтвердить или отклонить уже найденного кандидата.</div><div class="audit-note" style="margin-bottom:10px">Проверено ${s.evidence.length} дат и сумм · сумма доказательств ${money(s.observed_total||sumMoney(s.evidence))} · период ${escapeHtml(s.first_date||'—')} — ${escapeHtml(s.last_date||'—')}</div>${s.evidence.map(e=>`<div class="evidence-item"><div>${escapeHtml(e.date)}</div><div><strong>${money(e.amount)}</strong></div><div><strong style="font-size:.74rem">${escapeHtml(e.merchant_name||s.name)}</strong><br>${escapeHtml(e.description)}</div></div>`).join('')}`;$('#modal').classList.add('open')}
+  function openEvidence(id){const s=state.subscriptions.find(x=>x.candidate_id===id);if(!s)return;$('#modalTitle').textContent=s.name;$('#modalBody').innerHTML=`<div class="trust-box" style="margin:0 0 14px"><strong>Почему это не выдумка:</strong> каждая строка ниже пришла из загруженного файла. AI мог только подтвердить или отклонить уже найденного кандидата.</div><div class="audit-note" style="margin-bottom:10px">Проверено ${s.evidence.length} дат и сумм · сумма доказательств ${money(s.observed_total||sumMoney(s.evidence))} · период ${escapeHtml(s.first_date||'—')} — ${escapeHtml(s.last_date||'—')} · AI-проходов: ${s.review_passes||1}${s.price_change_detected?' · обнаружена смена цены':''}</div>${s.evidence.map(e=>`<div class="evidence-item"><div>${escapeHtml(e.date)}</div><div><strong>${money(e.amount)}</strong></div><div><strong style="font-size:.74rem">${escapeHtml(e.merchant_name||s.name)}</strong><br>${escapeHtml(e.description)}</div></div>`).join('')}`;$('#modal').classList.add('open')}
   function openLetter(id){const s=state.subscriptions.find(x=>x.candidate_id===id);if(!s)return;const text=`Здравствуйте!\n\nПрошу отключить подписку/регулярное списание «${s.name}». В моей банковской выписке обнаружены повторяющиеся списания примерно по ${money(s.typical_amount)} (${s.cadence}).\n\nПожалуйста, подтвердите отключение автопродления и отсутствие будущих списаний.\n\nС уважением,\n[Ваше имя]`;$('#modalTitle').textContent=`Отмена: ${s.name}`;$('#modalBody').innerHTML=`<div class="codebox">${escapeHtml(text)}</div><button class="btn primary" id="copyLetter" style="margin-top:14px"><i class="fa-solid fa-copy"></i> Скопировать</button>`;$('#modal').classList.add('open');$('#copyLetter').onclick=()=>navigator.clipboard.writeText(text).then(()=>toast('Письмо скопировано'))}
   function closeModal(){$('#modal').classList.remove('open')}
   function exportJson(){if(!state.transactions.length){toast('Сначала выполните анализ — экспортировать пока нечего');return}const audit=state.audit?{transactions_read:state.audit.count,expenses:state.audit.expenses,income:state.audit.income,net:state.audit.net,first_date:state.audit.firstDate?.toISOString().slice(0,10),last_date:state.audit.lastDate?.toISOString().slice(0,10),possible_duplicates:state.audit.possibleDuplicates,ai:state.audit.ai}:null;const blob=new Blob([JSON.stringify({file:state.fileName,audit,candidates:state.candidates,subscriptions:state.subscriptions},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='finance-analysis.json';a.click();URL.revokeObjectURL(a.href)}
