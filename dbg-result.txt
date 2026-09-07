@@ -1,0 +1,3 @@
+FATAL: Error: Cannot connect to CDP on 9222
+    at getTabs (file:///C:/Users/user/Desktop/sber-finance-scanner/screenshot.mjs:18:9)
+    at async main (file:///C:/Users/user/Desktop/sber-finance-scanner/screenshot.mjs:22:16)
